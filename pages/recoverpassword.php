@@ -16,7 +16,7 @@
 <body>
 
     <div class="text-center">
-        <a href="./login.html">
+        <a href="./login.php">
             <img src="../img/mamuts4.png" class="rounded" alt="Volver"
                 style="background-color: #170963; width: 10%; height: 10%;">
         </a>
@@ -25,7 +25,6 @@
 
     <form action="action.php">
         <div class="mb-3" style="margin-left: 20px; margin-top: 20px;">
-            <label for="" class="form-label"></label>
             <input type="text" class="form-control" name="rut" id="rut" aria-describedby="helpId"
                 placeholder="Ingrese su Rut" onkeydown="rutValido()">
             <small id="helpId" class="form-text text-muted" style="margin-left: 20px; margin-top: 20px">Le enviaremos un
