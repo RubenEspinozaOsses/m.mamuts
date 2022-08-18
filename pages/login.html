@@ -21,18 +21,24 @@
   </div>
 
   <form action="action.php">
-    <div class="mb-3">
+    <div class="mb-3" style="padding-left: 20px; padding-top: 20px;">
       <label for="rut" class="form-label">Rut</label>
       <input type="text" class="form-control" name="rut" id="rut" aria-describedby="emailHelpId"
         placeholder="Ingrese su rut" onkeydown="rutValido()">
       <small id="help-login" class="form-text text-muted"></small>
+
+      <div class="mb-3">
+        <label for="" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="" id="" placeholder="Ingrese su contraseña">
+      </div>
+
+      <small class="form-text text-muted" style="padding: 20px;">
+        <a href="./recoverpassword.html">Olvido su contraseña?</a>
+      </small>
     </div>
 
 
-    <div class="mb-3">
-      <label for="" class="form-label">Contraseña</label>
-      <input type="password" class="form-control" name="" id="" placeholder="Ingrese su contraseña">
-    </div>
+    
 
     <div style="text-align:center;">
       <button type="submit" class="btn btn-primary">
