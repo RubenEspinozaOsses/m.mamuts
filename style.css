@@ -1,7 +1,7 @@
 .display-canvas {
     display: grid;
-    grid-template-rows: repeat(16, 48px);
-    grid-template-columns: repeat(10, 48px);
+    grid-template-rows: repeat(16, 42px);
+    grid-template-columns: repeat(10, 42px);
     background-color: aqua;
 }
 
@@ -36,6 +36,5 @@
     color: #170963;
     border-radius: 1rem;
     border-color: #170963;
-    background-color: red;
     padding: 10px;
 }
