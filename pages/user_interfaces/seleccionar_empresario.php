@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="load()">
 
   <nav class="navbar" style="background-color: #170963;">
     <div class="container-fluid">
@@ -34,30 +34,17 @@
 
 
 
-  <ul class="list-group" id="empresarios">
-    <li class="list-group-item">Ruben</li>
-    <li class="list-group-item">Patricio</li>
-    <li class="list-group-item">Andres</li>
-    <li class="list-group-item">Rodrigo</li>
-    <li class="list-group-item">Juan</li>
-    <li class="list-group-item">Oscar</li>
-    <li class="list-group-item">Matias</li>
-    <li class="list-group-item">Miguel</li>
-    <li class="list-group-item">Ana</li>
-    <li class="list-group-item">Luis</li>
-    <li class="list-group-item">Rossana</li>
-    <li class="list-group-item">Maggiolli</li>
-    <li class="list-group-item">Lilian</li>
-    <li class="list-group-item">Janet</li>
+  <div id="empresarios" class="card" style="width: 18rem; padding: 20px;">
 
-  </ul>
+
+  </div>
 
 
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-  <script src="../../js/buscarempresario.js">
+  <script src="../../js/pages/user_interfaces/seleccionar_empresario.js">
 
   </script>
 </body>

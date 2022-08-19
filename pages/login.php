@@ -41,7 +41,7 @@
 
 
     <div style="text-align:center;">
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" id="login">
         <img src="../img/mamuts1.png" alt="LogIn" style="width:32px; height:32px; border-color: #170963;">
       </button>
     </div>
@@ -56,7 +56,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
-  <script src="../js/utils.js"></script>
+  <script src="../js/pages/login.js"></script>
 </body>
 
 </html>

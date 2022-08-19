@@ -25,7 +25,7 @@
 
     <form action="action.php">
         <div class="mb-3" style="margin-left: 20px; margin-top: 20px;">
-            <input type="text" class="form-control" name="rut" id="rut" aria-describedby="helpId"
+            <input type="text" class="form-control" name="rut-recover" id="rut-recover" aria-describedby="helpId"
                 placeholder="Ingrese su Rut" onkeydown="rutValido()">
             <small id="helpId" class="form-text text-muted" style="margin-left: 20px; margin-top: 20px">Le enviaremos un
                 correo con los pasos a seguir</small>
@@ -46,7 +46,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
         crossorigin="anonymous"></script>
-    <script src="../js/utils.js"></script>
+    <script src="../js/pages/recoverpassword.js"></script>
 </body>
 
 </html>
