@@ -39,7 +39,7 @@ function load(){
 
         var p = document.createElement('p')
         p.className = 'card-text'
-        pdata = document.createTextNode('Some quick example text to build on the card title and make up the bulk of the card\'s content.');
+        pdata = document.createTextNode('Rut Empresa  20106191-1');
         p.appendChild(pdata)
 
         var a1 = document.createElement('a')
