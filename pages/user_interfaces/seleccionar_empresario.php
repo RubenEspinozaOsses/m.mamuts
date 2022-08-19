@@ -33,9 +33,11 @@
   </nav>
 
 
+  <div class="card-deck" style="border-color: #170963; border-width: 30px;">
 
-  <div id="empresarios" class="card" style="width: 18rem; padding: 20px;">
+    <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto;" class="row">
 
+    </div>
 
   </div>
 

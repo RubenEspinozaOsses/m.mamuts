@@ -3,9 +3,9 @@ var empresarios = ['Ruben', 'Patricio', 'Andres', 'Juan', 'Oscar', 'Matias', 'Mi
 
 function load(){
 
-    var elemento = document.getElementById('empresarios')
+    var row = document.getElementById('empresarios')
 
-    console.log(elemento)
+    //console.log(elemento)
 
     /*for (var i = 0; i < empresarios.length; i++) {
         var li = document.createElement('li')
@@ -16,8 +16,16 @@ function load(){
     }*/
 
     for (var i = 0; i < empresarios.length; i++) {
-        var div = document.createElement('div')
-        div.className = 'card-body'
+
+        var col_sm = document.createElement('div')
+        col_sm.className = "col-sm-6"
+
+        var card = document.createElement('div')
+        card.className = "card"
+
+
+        var card_body = document.createElement('div')
+        card_body.className = 'card-body'
 
         var h5 = document.createElement('h5')
         h5.className = 'card-title'
@@ -46,13 +54,25 @@ function load(){
         a2data = document.createTextNode('Another link')
         a2.appendChild(a2data)
 
-        div.appendChild(h5)
-        div.appendChild(h6)
-        div.appendChild(p)
-        div.appendChild(a1)
-        div.appendChild(a2)
 
-        elemento.appendChild(div)
+        //agregando todo al card-body
+        card_body.appendChild(h5)
+        card_body.appendChild(h6)
+        card_body.appendChild(p)
+        card_body.appendChild(a1)
+        card_body.appendChild(a2)
+
+
+        //agregando card-body al card
+        card.appendChild(card_body)
+
+        
+        //agregando el card al col-sm-6
+        col_sm.appendChild(card)
+
+
+        //agregando el card-sm-6 al row
+        row.appendChild(col_sm)
 
     }
 
@@ -86,6 +106,6 @@ function buscar(){
 function mostrarTodos(){
     var empresarios = document.getElementById('empresarios').getElementsByTagName('div');
     for (var i = 0; i < empresarios.length; i++) {
-        empresarios[i].style.display = 'inline'
+        empresarios[i].style.display = 'block'
     }
 }
