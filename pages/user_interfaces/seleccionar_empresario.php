@@ -35,7 +35,7 @@
 
   <div class="card-deck" style="border-color: #170963; border-width: 30px;">
 
-    <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto;" class="row">
+    <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto; overflow-x: scroll;" class="row">
 
     </div>
 
