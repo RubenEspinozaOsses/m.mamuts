@@ -86,16 +86,18 @@ if (!isset($_SESSION['id_usuario'])) {
           <?php
             for ($i = 0; $i < $cantidad_empresarios; $i++){
               $nombre = $empresarios[$i] -> obtener_nombre();
+              $rut_empresa = $empresarios[$i] -> obtener_rut_razon_social();
+              $rut_empresario = $empresarios[$i] -> obtener_rut();
           ?>
 
 
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><?php echo $nombre ?></h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <h6 class="card-subtitle mb-2 text-muted">Rut Empresa</h6>
+              <p class="card-text"><?php echo $rut_empresa ?></p>
+              <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link">Detalles</a>
+              <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link">Menu</a>
             </div>
           </div>
 

@@ -1013,10 +1013,7 @@ class class_operar_empresarios {
     public static function listar_empresarios_asesor_activo_observado($rut_asesor, $conexion) {
 
         $empresarios = array();
-        echo "<script type='text/javascript'>console.log('Is set connection')</script>";
         if (isset($conexion)) {
-            echo "<script type='text/javascript'>console.log('Si')</script>";
-            echo "<script type='text/javascript'>console.log('Intentando try')</script>";
             try {
 
                 $sql = "SELECT * FROM empresarios WHERE (rut_asesor =:rut_asesor) AND (estado =:estado1 OR estado =:estado2) ORDER BY apellido_paterno ASC";
@@ -1031,7 +1028,6 @@ class class_operar_empresarios {
                 $sentencia->execute();
 
                 $resultado = $sentencia->fetchAll();
-                echo "<script type='text/javascript'>console.log('Procediendo a scrapear')</script>";
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         
@@ -1040,9 +1036,7 @@ class class_operar_empresarios {
                         );
                     }
                 }
-                echo "<script type='text/javascript'>console.log('Final de try sin problemas')</script>";
             } catch (PDOException $ex) {
-                echo "<script type='text/javascript'>console.log('Fallo el try')</script>";
                 print "ERROR" . $ex->getMessage();
             }
         }
