@@ -1,16 +1,15 @@
 <?php
+include '../../sys/control_sesion.php';
+include '../../sys/db_config.php';
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
-  include '../../sys/control_sesion.php';
-  include '../../sys/db_config.php';
 
-  
   conexion::cerrar_conexion();
   control_sesion::cerrar_sesion();
 
   echo "Inicie sesion nuevamente";
   header("refresh:4;url=../login.php");
-} else { ?>
+} else if ($_SESSION['acceso_usuario'] == 2) { ?>
 
   <!doctype html>
   <html lang="en">
@@ -25,9 +24,32 @@ if (!isset($_SESSION['id_usuario'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
 
-  <body onload="load()">
+  <!-- <body onload="load()"> -->
 
+  <body>
 
+    <?php
+
+    include '../../db/entrepeneur/entrepeneur_handler.php';
+
+    conexion::abrir_conexion();
+
+    $rut_asesor = $_SESSION['rut_usuario'];
+
+    //echo "<script type='text/javascript'>console.log('$rut_asesor')</script>";
+
+    $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado($rut_asesor, conexion::obtener_conexion());
+    $cantidad_empresarios = count($empresarios);
+
+    //echo "<script type='text/javascript'>console.log('$empresarios')</script>";
+
+    /*for ($i = 0; $i < $cantidad_empresarios; $i++){
+        $nombre = $empresarios[$i] -> obtener_nombre();
+        echo "<h3>$nombre</h3>";
+      }*/
+
+    conexion::cerrar_conexion();
+    ?>
 
     <nav class="navbar" style="background-color: #170963;">
       <div class="container-fluid">
@@ -59,6 +81,27 @@ if (!isset($_SESSION['id_usuario'])) {
     <div class="container">
       <div class="col-12 col-md-6 col-lg-3">
         <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto;" class="row">
+
+
+          <?php
+            for ($i = 0; $i < $cantidad_empresarios; $i++){
+              $nombre = $empresarios[$i] -> obtener_nombre();
+          ?>
+
+
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $nombre ?></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+          <?php 
+            }
+          ?>
 
         </div>
       </div>

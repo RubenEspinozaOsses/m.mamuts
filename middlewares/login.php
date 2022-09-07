@@ -17,7 +17,6 @@ $validador = new login_val($rut, $password);
 
 $login_valido = $validador -> login_valido();
 
-echo "<script type='text/javascript'>console.log('$login_valido');</script>";
 
 if (!$login_valido) {
     header("refresh:3;url=../pages/login.php");
