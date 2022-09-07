@@ -14,6 +14,8 @@
 
 <body onload="load()">
 
+  
+
   <nav class="navbar" style="background-color: #170963;">
     <div class="container-fluid">
       <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
@@ -22,7 +24,7 @@
     </div>
 
 
-    <div class="collapse" id="search">
+    <div class="collapse" id="search" style="margin: 0 auto; text-align: center;">
       <div class="container-fluid">
         <input type="text" id="textfield" placeholder="Buscar empresario" class="form-control" onkeyup="buscar()">
         </input>
@@ -33,12 +35,12 @@
   </nav>
 
 
-  <div class="card-deck" style="border-color: #170963; border-width: 30px;">
+  <div class="container">
+    <div class="col-12 col-md-6 col-lg-3">
+      <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto;" class="row">
 
-    <div id="empresarios" style="width: 50rem; padding: 10px; margin: 0 auto; overflow-x: scroll;" class="row">
-
+      </div>
     </div>
-
   </div>
 
 

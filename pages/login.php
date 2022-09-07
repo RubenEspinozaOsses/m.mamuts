@@ -19,16 +19,20 @@
     <img src="../img/mamuts1.png" class="rounded" alt="Mamut" style="background-color: #170963;">
   </div>
 
-  <form action="./user_interfaces/seleccionar_empresario.php">
+  
+
+  <form action="../middlewares/login.php" method="post">
     <div class="mb-3" style="padding-left: 20px; padding-top: 20px;">
       <label for="rut" class="form-label">Rut</label>
       <input type="text" class="form-control" name="rut" id="rut" aria-describedby="emailHelpId" placeholder="Ingrese su rut" onkeydown="rutValido()">
       <small id="help-login" class="form-text text-muted"></small>
 
       <div class="mb-3">
-        <label for="" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" name="" id="password" placeholder="Ingrese su contraseña">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña">
       </div>
+
+      
 
       <small class="form-text text-muted" style="padding: 20px;">
         <a href="./recoverpassword.php">

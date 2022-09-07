@@ -21,7 +21,7 @@ function load(){
         col_sm.className = "col-sm-6"
 
         var card = document.createElement('div')
-        card.className = "card"
+        card.className = "card w-50"
 
 
         var card_body = document.createElement('div')
@@ -45,13 +45,13 @@ function load(){
         var a1 = document.createElement('a')
         a1.href = '#'
         a1.className = 'card-link'
-        a1data = document.createTextNode('Card link');
+        a1data = document.createTextNode('Detalles');
         a1.appendChild(a1data)
 
         var a2 = document.createElement('a')
         a2.href = '#'
         a2.className = 'card-link'
-        a2data = document.createTextNode('Another link')
+        a2data = document.createTextNode('Menu Empresario')
         a2.appendChild(a2data)
 
 
