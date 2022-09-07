@@ -16,6 +16,8 @@ class control_sesion {
         $_SESSION['tiempo'] = time();
 
         setcookie(session_name(), session_id(), time() + $tiempo_sesion);
+
+        
     }
 
     public static function cerrar_sesion() {
