@@ -1,6 +1,6 @@
 <?php
 
-include './entrepeneut_extrad_tbl_handler.php';
+include 'entrepeneut_extrad_tbl_handler.php';
 
 class class_operar_dias_extras_empresario {
 

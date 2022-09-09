@@ -31,6 +31,16 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
 <body style="color: #170963;">
 
+  <nav class="navbar" style="background-color: #170963;">
+    <div class="container-fluid">
+      
+      <a href="../seleccionar_empresario.php" class="card navbar-left">
+        <img src="../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black" >
+
+      </a>
+    </div>
+  </nav>
+
   <h1 style="text-align: center; padding-top: 2%;">
     Detalles Empresario
   </h1>
@@ -134,22 +144,24 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
                     </h6>
                     <div class="text-muted" style="display: inline-block;">
                       <?php
-                      
-                        
-                        $estado = $proyecto -> obtener_estado();
-                        $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario -> obtener_codigo_empresario(), conexion::obtener_conexion());
-                        $fecha_hoy = date('Y-m-d');
-                        
-                        $fecha_termino = $formalizacion[0] -> obtener_fecha_termino();
-
-                        $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario($empresario -> obtener_codigo_empresario(), conexion::obtener_conexion());
-
-                        $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
 
 
-                        
-                        echo $estado == "Activo" ? "$estado, quedan $dias_restantes dias" : "$estado";
-                      
+                      $estado = $proyecto->obtener_estado();
+                      $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+                      $fecha_hoy = date('Y-m-d');
+
+                      $fecha_termino = $formalizacion[0]->obtener_fecha_termino();
+
+                      $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+
+                      $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
+
+                      $msg_dias_extra = $dias_extra > 0 ? "($dias_extra dias extra)" : "";
+
+                      $msg_dias_restantess = $dias_restantes <= 0 ? "No quedan dias restantes" : "$estado, quedan $dias_restantes dias";
+
+                      echo $estado == "Activo" ? $msg_dias_restantess . $msg_dias_extra : "$estado";
+
                       ?>
                     </div>
                   </div>
