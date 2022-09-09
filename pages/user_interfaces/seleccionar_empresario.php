@@ -77,39 +77,60 @@ if (!isset($_SESSION['id_usuario'])) {
       </div>
     </nav>
 
-
-    <div class="container" style="align-content: center;">
-      <div class="">
-        <div class="card-grid" id="empresarios" style="width: 50rem; padding-top: 10px; padding-bottom: 10px; margin: auto;">
+    <div class="page-wrap gradient-primary">
 
 
-          <?php
-          for ($i = 0; $i < $cantidad_empresarios; $i++) {
-            $nombre = $empresarios[$i]->obtener_nombre();
-            $rut_empresa = $empresarios[$i]->obtener_rut_razon_social();
-            $rut_empresario = $empresarios[$i]->obtener_rut();
-          ?>
+
+      <div class="container" style="align-content: center;">
+        <div class="">
+          <div id="empresarios" style="width: 50rem; padding-top: 10px; padding-bottom: 10px; margin: auto;">
 
 
-            <div class="card col" style="width: 18rem; white-space: nowrap; margin: auto;">
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $nombre ?></h5>
-                <h6 class="card-subtitle mb-2 text-muted">Rut Empresa</h6>
-                <p class="card-text"><?php echo $rut_empresa ?></p>
-                <div class="card-footer text-center" style="background-color: white;">
-                  <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link">Detalles <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
+            <?php
+            for ($i = 0; $i < $cantidad_empresarios; $i++) {
+              $nombre = $empresarios[$i]->obtener_nombre();
+              $rut_empresa = $empresarios[$i]->obtener_rut_razon_social();
+              $rut_empresario = $empresarios[$i]->obtener_rut();
+            ?>
+
+
+              <div class="row no-gutters  mx-auto justify-content-start flex-sm-row flex-column">
+                <div class="card col-md-6" style="width: 18rem; white-space: nowrap; margin: auto; padding: 0px; border-color:#170963; display: inline-block;">
+                  <div class="card w-75 h-75" style="padding: 0px; display: inline-block; border-top-right-radius: 0rem;border-bottom-right-radius: 0rem; border-color: transparent; border-right-color: #170963;">
+                    <div class="card-body">
+                      <div class="col-3">
+                        <h5 class="card-title col"><?php echo $nombre ?></h5>
+                      </div>
+                      <div class="col-3">
+                        <h6 class="card-subtitle mb-2 text-muted col-3">Rut Empresa</h6>
+                      </div>
+
+                      <p class="card-text col"><?php echo $rut_empresa ?></p>
+
+
+                      <div class="card-footer text-center row" style="background-color: white;">
+                        <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="w-25 h-25 col text-center align-top" style="display: inline-block; margin: auto;  padding-top: 25%;">
+                    <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
+                  </div>
+
                 </div>
-                
+                <hr style="color: white;" />
               </div>
-            </div>
-            <div class="col" style="color: white;">
-              <hr />
-            </div>
 
-          <?php
-          }
-          ?>
 
+
+
+            <?php
+            }
+            ?>
+
+          </div>
         </div>
       </div>
     </div>
