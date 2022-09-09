@@ -52,29 +52,29 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
     </h1>
 
     <div class="container-fluid">
-        <div class="card-deck row-3 col-2">
+        <div class="card col-sm-2 row-sm-3">
             <div class="overflow-auto">
-                <div class="card">
+                <div class="card row">
                     <div class="card-body">
                         a
                     </div>
                 </div>
-                <div class="card">
+                <div class="card row">
                     <div class="card-body">
                         a
                     </div>
                 </div>
-                <div class="card">
+                <div class="card row">
                     <div class="card-body">
                         a
                     </div>
                 </div>
-                <div class="card">
+                <div class="card row">
                     <div class="card-body">
                         a
                     </div>
                 </div>
-                <div class="card">
+                <div class="card row">
                     <div class="card-body">
                         a
                     </div>

@@ -81,9 +81,9 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
 
-      <div class="container" style="align-content: center;">
-        <div class="">
-          <div id="empresarios" style="width: 50rem; padding-top: 10px; padding-bottom: 10px; margin: auto;">
+      <div class="container">
+        <div class="overflow-auto">
+          <div id="empresarios" style="padding-top: 10px; padding-bottom: 10px; margin: auto;">
 
 
             <?php
@@ -94,9 +94,9 @@ if (!isset($_SESSION['id_usuario'])) {
             ?>
 
 
-              <div class="row no-gutters  mx-auto justify-content-start flex-sm-row flex-column">
-                <div class="card col-md-6" style="width: 18rem; white-space: nowrap; margin: auto; padding: 0px; border-color:#170963; display: inline-block;">
-                  <div class="card w-75 h-75" style="padding: 0px; display: inline-block; border-top-right-radius: 0rem;border-bottom-right-radius: 0rem; border-color: transparent; border-right-color: #170963;">
+              <div class="row d-flex justify-content-center" style="margin-left: auto; margin-right: auto;">
+                <div class="card col-md-6" style="width: 18rem; white-space: nowrap; padding: 0px; border-color:#170963; display: inline-block;">
+                  <div class="card w-75" style="padding: 0px; display: inline-block; border-top-right-radius: 0rem;border-bottom-right-radius: 0rem; border-color: transparent; border-right-color: #170963;">
                     <div class="card-body">
                       <div class="col-3">
                         <h5 class="card-title col"><?php echo $nombre ?></h5>
@@ -115,7 +115,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     </div>
                   </div>
 
-                  <div class="w-25 h-25 col text-center align-top" style="display: inline-block; margin: auto;  padding-top: 25%;">
+                  <div class="w-25 col text-center align-top" style="display: inline-block; margin: auto;  padding-top: 25%;">
                     <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
                   </div>
 
