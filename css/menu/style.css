@@ -11,6 +11,13 @@
     padding-top: 3%;
 }
 
+.menu-button {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
 nav {
     background-color: var(--main-color);
 }
@@ -23,3 +30,4 @@ img {
     align-content: center;
     border-color: var(--main-color);
 }
+

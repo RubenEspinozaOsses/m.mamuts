@@ -56,27 +56,16 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         <div class="row">
             <div class="col">
                 <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
-                </div>
-            </div>
-        </div>
-
-        <hr style="color: white;" />
-
-        <div class="row">
-            <div class="col">
-                <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
-                </div>
-            </div>
-            <div class="col">
-                <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
                 </div>
             </div>
         </div>
@@ -86,12 +75,35 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         <div class="row">
             <div class="col">
                 <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
-                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr style="color: white;" />
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-white">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-white">
+                    <a href="" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    </a>
                 </div>
             </div>
         </div>
