@@ -1,0 +1,47 @@
+nav {
+    background-color: #170963;
+}
+
+#search {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#empresarios {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+.detail-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-container {
+    width: 18rem;
+    white-space: nowrap;
+    padding: 0px;
+    border-color: #170963;
+    display: inline-block;
+}
+
+.card-75 {
+    padding: 0px;
+    display: inline-block;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    border-color: transparent;
+    border-right-color: #170963;
+}
+
+
+.footer-card {
+    background-color: white;
+}
+
+.card-25 {
+    display: inline-block;
+    margin: auto;
+    padding-top: 25%;
+}

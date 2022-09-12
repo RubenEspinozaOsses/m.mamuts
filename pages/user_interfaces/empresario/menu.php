@@ -26,12 +26,12 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../../../css/menu/style.css">
 </head>
 
 <body style="color: #170963;">
 
-    <nav class="navbar" style="background-color: #170963;">
+    <nav class="navbar">
         <div class="container-fluid">
 
             <a href="../seleccionar_empresario.php" class="card navbar-left">
@@ -41,7 +41,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         </div>
     </nav>
 
-    <h1 class="text-center">
+    <h1 class="text-center title">
         <?php
         $n = $empresario->obtener_nombre();
         $ap = $empresario->obtener_apellido_paterno();
@@ -51,36 +51,51 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         ?>
     </h1>
 
-    <div class="container-fluid">
-        <div class="card col-sm-2 row-sm-3">
-            <div class="overflow-auto">
-                <div class="card row">
-                    <div class="card-body">
-                        a
-                    </div>
+    <div class="container justify-content-sm-center">
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
                 </div>
-                <div class="card row">
-                    <div class="card-body">
-                        a
-                    </div>
-                </div>
-                <div class="card row">
-                    <div class="card-body">
-                        a
-                    </div>
-                </div>
-                <div class="card row">
-                    <div class="card-body">
-                        a
-                    </div>
-                </div>
-                <div class="card row">
-                    <div class="card-body">
-                        a
-                    </div>
+            </div>
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
                 </div>
             </div>
         </div>
+
+        <hr style="color: white;" />
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                </div>
+            </div>
+        </div>
+
+        <hr style="color: white;" />
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-white">
+                    <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                </div>
+            </div>
+        </div>
+
     </div>
 
 

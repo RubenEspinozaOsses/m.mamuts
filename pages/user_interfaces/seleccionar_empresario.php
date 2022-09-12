@@ -22,6 +22,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/seleccionar_empresario/style.css">
   </head>
 
   <!-- <body onload="load()"> -->
@@ -51,7 +52,7 @@ if (!isset($_SESSION['id_usuario'])) {
     conexion::cerrar_conexion();
     ?>
 
-    <nav class="navbar" style="background-color: #170963;">
+    <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
           <img src="../../img/mamuts1.png" alt="" width="30" height="24">
@@ -67,7 +68,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
 
-      <div class="collapse" id="search" style="margin: 0 auto; text-align: center;">
+      <div class="collapse" id="search">
         <div class="container-fluid">
           <input type="text" id="textfield" placeholder="Buscar empresario" class="form-control" onkeyup="buscar()">
           </input>
@@ -83,7 +84,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
       <div class="container">
         <div class="overflow-auto">
-          <div id="empresarios" style="padding-top: 10px; padding-bottom: 10px; margin: auto;">
+          <div id="empresarios">
 
 
             <?php
@@ -94,9 +95,9 @@ if (!isset($_SESSION['id_usuario'])) {
             ?>
 
 
-              <div class="row d-flex justify-content-center" style="margin-left: auto; margin-right: auto;">
-                <div class="card col-md-6" style="width: 18rem; white-space: nowrap; padding: 0px; border-color:#170963; display: inline-block;">
-                  <div class="card w-75" style="padding: 0px; display: inline-block; border-top-right-radius: 0rem;border-bottom-right-radius: 0rem; border-color: transparent; border-right-color: #170963;">
+              <div class="row d-flex justify-content-center detail-container">
+                <div class="card col-md-6 card-container">
+                  <div class="card w-75 card-75">
                     <div class="card-body">
                       <div class="col-3">
                         <h5 class="card-title col"><?php echo $nombre ?></h5>
@@ -108,14 +109,14 @@ if (!isset($_SESSION['id_usuario'])) {
                       <p class="card-text col"><?php echo $rut_empresa ?></p>
 
 
-                      <div class="card-footer text-center row" style="background-color: white;">
+                      <div class="card-footer text-center row">
                         <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
                       </div>
 
                     </div>
                   </div>
 
-                  <div class="w-25 col text-center align-top" style="display: inline-block; margin: auto;  padding-top: 25%;">
+                  <div class="w-25 col text-center align-top card-25">
                     <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
                   </div>
 

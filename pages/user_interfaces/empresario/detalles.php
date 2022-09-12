@@ -25,12 +25,12 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
   <!-- Bootstrap CSS v5.2.0-beta1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="../../../css/detalles/style.css">
 </head>
 
 <body style="color: #170963;">
 
-  <nav class="navbar" style="background-color: #170963;">
+  <nav class="navbar">
     <div class="container-fluid">
       
       <a href="../seleccionar_empresario.php" class="card navbar-left">
@@ -40,13 +40,13 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
     </div>
   </nav>
 
-  <h1 style="text-align: center; padding-top: 2%;">
+  <h1 class="title">
     Detalles Empresario
   </h1>
-  <div class="container" style="padding-top: 2%;">
+  <div class="container card-container">
     <div class="card-deck">
       <div class="overflow-auto">
-        <div class="card bg-primary-outlined" style="border-color: #170963;">
+        <div class="card bg-primary-outlined">
           <div class="card">
             <div class="card-body">
 
@@ -59,7 +59,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
                 echo "$nombre_empresario $ap_pat $ap_mat";
                 ?>
               </h5>
-              <p class="card-text" style="padding-left: 3%;">
+              <p class="card-text">
                 Rut
                 <?php
 
@@ -82,7 +82,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
               <h5 class="card-title text-left">
                 Proyecto
               </h5>
-              <p class="card-text w-50" style="padding-left: 3%;">
+              <p class="card-text w-50">
 
                 <?php
 
@@ -105,7 +105,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
               <h5 class="card-title text-left">
                 Empresa
               </h5>
-              <div class="card" style="border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;">
+              <div class="card empresa-details">
                 <div class="card-body">
 
                   <h6 class="card-title text-left">
@@ -121,7 +121,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
                 </div>
               </div>
 
-              <div class="card" style="border: 0px solid transparent">
+              <div class="card asesor-details">
                 <div class="card-body">
 
                   <h6 class="card-title text-left">
@@ -137,11 +137,11 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
                     ?>
                   </h6>
 
-                  <div class="white-space: nowrap">
-                    <h6 class="card-title" style="display: inline-block;">
+                  <div>
+                    <h6 class="card-title status-basic-in-line">
                       Estado
                     </h6>
-                    <div class="text-muted" style="display: inline-block;">
+                    <div class="text-muted status-basic-in-line">
                       <?php
 
 

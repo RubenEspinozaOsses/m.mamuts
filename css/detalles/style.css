@@ -1,0 +1,34 @@
+nav {
+    background-color: #170963;
+}
+
+p {
+    padding-left: 3%;
+}
+
+.title {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.card-container {
+    padding-top: 2%;
+}
+
+.detail-card {
+    border-color: #170963;
+}
+
+.empresa-details {
+    border-top: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+}
+
+.asesor-details {
+    border: 0px solid transparent
+}
+
+.status-basic-in-line {
+    display: inline-block;
+}
