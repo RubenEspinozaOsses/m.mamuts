@@ -211,10 +211,10 @@ class class_operar_proyectos {
         if (isset($conexion)) {
             try {
 
-                $sql = "SELECT * FROM proyectos WHERE codigo_bp = $codigo_bp";
+                $sql = "SELECT * FROM proyectos WHERE codigo_bp = :codigo_bp";
                 
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam($codigo_bp, $codigo_bp, PDO::PARAM_STR);
+                $sentencia->bindParam(':codigo_bp', $codigo_bp, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
                 if (!empty($resultado)) {
