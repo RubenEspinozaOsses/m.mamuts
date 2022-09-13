@@ -239,6 +239,7 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
                         <a href="">
                             Nombre [<?php echo $f->obtener_fecha_inicio() ?> - <?php echo $f->obtener_fecha_termino() ?>]
                         </a>
+                        <br>
                     <?php
                     }
 

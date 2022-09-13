@@ -109,7 +109,7 @@ if (!isset($_SESSION['id_usuario'])) {
                       <p class="card-text col"><?php echo $rut_empresa ?></p>
 
 
-                      <div class="card-footer text-center row">
+                      <div class="card-footer text-center row" style="background-color: white;">
                         <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
                       </div>
 

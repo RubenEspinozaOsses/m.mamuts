@@ -63,14 +63,17 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/antecedentes.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                        <img src="../../../img/mamuts1.png" alt="Antecedentes"><br>
+                        <h6>Antecedentes</h6>
                     </a>
+                    
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/presupuesto.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Presupuesto">
+                        <img src="../../../img/mamuts1.png" alt="Presupuesto"><br>
+                        <h6>Presupuesto</h6>
                     </a>
                 </div>
             </div>
@@ -82,14 +85,16 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/rendiciones.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Rendiciones">
+                        <img src="../../../img/mamuts1.png" alt="Rendiciones"><br>
+                        <h6>Rendiciones</h6>
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/subirfotos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Subir Fotos">
+                        <img src="../../../img/mamuts1.png" alt="Subir Fotos"><br>
+                        <h6>Subir Fotos</h6>
                     </a>
                 </div>
             </div>
@@ -101,7 +106,8 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/archivos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Archivos">
+                        <img src="../../../img/mamuts1.png" alt="Archivos"><br>
+                        <h6>Archivos</h6>
                     </a>
                 </div>
             </div>
