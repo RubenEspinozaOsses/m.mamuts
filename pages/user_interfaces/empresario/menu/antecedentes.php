@@ -15,6 +15,10 @@ $rut_empresario = $_GET['rut_empresario'];
 $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
+$empresa = null;
+$plan_trabajo = null; //elementos de proyectos
+$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion())
+
 
 
 ?>
@@ -58,9 +62,82 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                     Empresario
                 </h6>
                 <div class="card-body">
-                    <p>
-                        hola
-                    </p>
+                    <div class="row">
+
+                        <div class="col">
+                            <h6>Nombre Empresario</h6>
+                            <p>
+                                <?php
+                                $n = $empresario->obtener_nombre();
+                                $ap = $empresario->obtener_apellido_paterno();
+                                $am = $empresario->obtener_apellido_materno();
+
+                                echo "$n $ap $am";
+
+                                ?>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            <h6>Direccion</h6>
+                            <p>
+                                <?php
+                                echo $empresario->obtener_direccion_particular();
+                                ?>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            <h6>Celular</h6>
+                            <p>
+                                <?php
+                                echo $empresario->obtener_celular();
+                                ?>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col">
+                            <h6>Rut Empresario</h6>
+                            <p>
+                                <?php
+                                echo $empresario->obtener_rut();
+                                ?>
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            <h6>Email</h6>
+                            <p>
+                                <?php
+                                echo $empresario->obtener_email();
+                                ?>
+                            </p>
+                        </div>
+
+                        <?php
+                        if ($empresario->obtener_telefono() != 0) {
+                        ?>
+
+                            <div class="col">
+                                <h6>Telefono</h6>
+                                <p>
+                                    <?php
+                                    echo $empresario->obtener_telefono();
+                                    ?>
+                                </p>
+                            </div>
+
+
+                        <?php
+                        }
+
+                        ?>
+
+                    </div>
                 </div>
             </div>
             <hr class="border-white">
@@ -69,9 +146,73 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                     Empresa
                 </h6>
                 <div class="card-body">
-                    <p>
-                        hola
-                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <h6>
+                                Razon Social
+                            </h6>
+                            <p><?php echo $empresario->obtener_razon_social();  ?></p>
+                        </div>
+                        <div class="col">
+                            <h6>
+                                Rut Razon Social
+                            </h6>
+                            <p>
+                                <?php echo $empresario->obtener_rut_razon_social(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>
+                                Representate
+                            </h6>
+                            <p>
+                            <?php
+
+                                $representate = $empresario -> obtener_representante();
+
+                                echo "$representate";
+                            ?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>
+                                Persona Juridica
+                            </h6>
+                            <p>
+                                <?php echo $empresario->obtener_persona_juridica(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>
+                                Direccion
+                            </h6>
+                            <p>
+                                <?php echo $empresario->obtener_direccion(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>
+                                Rut Representante
+                            </h6>
+                            <p>
+                                <?php echo $empresario -> obtener_rut_representante(); ?>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>
+                                Tipo Juridica
+                            </h6>
+                            <p>
+                                <?php echo $empresario->obtener_tipo_juridica(); ?>
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <hr class="border-white">
@@ -91,9 +232,17 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                     Formalizacion
                 </h6>
                 <div class="card-body">
-                    <p>
-                        hola
-                    </p>
+                    <?php
+                    foreach ($formalizacion as $f) {
+                    ?>
+
+                        <a href="">
+                            Nombre [<?php echo $f->obtener_fecha_inicio() ?> - <?php echo $f->obtener_fecha_termino() ?>]
+                        </a>
+                    <?php
+                    }
+
+                    ?>
                 </div>
             </div>
         </div>
