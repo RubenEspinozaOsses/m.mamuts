@@ -246,6 +246,7 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
                     ?>
                 </div>
             </div>
+            <hr class="border-white">
         </div>
 
     </div>

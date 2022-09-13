@@ -78,6 +78,10 @@ if (!isset($_SESSION['id_usuario'])) {
       </div>
     </nav>
 
+    <h1 class="title text-center">
+      Empresarios
+    </h1>
+
     <div class="page-wrap gradient-primary">
 
 
