@@ -58,9 +58,9 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
 
         <div class="card-deck">
             <div class="card">
-                <h6 class="card-title indentation">
+                <h5 class="card-title indentation">
                     Empresario
-                </h6>
+                </h5>
                 <div class="card-body">
                     <div class="row">
 
@@ -142,9 +142,9 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
             </div>
             <hr class="border-white">
             <div class="card">
-                <h6 class="card-title indentation">
+                <h5 class="card-title indentation">
                     Empresa
-                </h6>
+                </h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -217,9 +217,9 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
             </div>
             <hr class="border-white">
             <div class="card">
-                <h6 class="card-title indentation">
+                <h5 class="card-title indentation">
                     Plan de trabajo
-                </h6>
+                </h5>
                 <div class="card-body">
                     <p>
                         hola
@@ -228,9 +228,9 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
             </div>
             <hr class="border-white">
             <div class="card">
-                <h6 class="card-title indentation">
+                <h5 class="card-title indentation">
                     Formalizacion
-                </h6>
+                </h5>
                 <div class="card-body">
                     <?php
                     foreach ($formalizacion as $f) {

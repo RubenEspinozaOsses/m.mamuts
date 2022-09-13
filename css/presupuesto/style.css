@@ -1,0 +1,69 @@
+:root {
+    --main-color: #170963;
+}
+
+.border-white {
+    border-color: white;
+}
+
+.title {
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+.no-right {
+    padding-right: 0%;
+}
+
+.no-left {
+    padding-left: 0%;
+}
+
+.no-both {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+
+.card-left {
+
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+}
+
+.card-right {
+
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+}
+
+.card-middle {
+
+    border-radius: 0rem;
+}
+
+.menu-button {
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.transparent-element {
+    color: white;
+    border-color: white;
+
+}
+
+nav {
+    background-color: var(--main-color);
+}
+
+img {
+    width: 65%;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    align-content: center;
+    border-color: var(--main-color);
+}
