@@ -1,0 +1,21 @@
+:root {
+    --main-color: #170963;
+}
+
+.title {
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+.border-white {
+    border-color: white;
+}
+
+.indentation {
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+nav {
+    background-color: var(--main-color);
+}

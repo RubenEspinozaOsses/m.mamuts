@@ -18,6 +18,12 @@
     margin: 0 auto;
 }
 
+.transparent-element {
+    color: white;
+    border-color: white;
+    
+}
+
 nav {
     background-color: var(--main-color);
 }

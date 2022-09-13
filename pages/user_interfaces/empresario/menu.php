@@ -8,7 +8,13 @@ include '../../../sys/db_config.php';
 
 conexion::abrir_conexion();
 
-$empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_GET['rut_empresario']), conexion::obtener_conexion());
+
+
+$rut_empresario = $_GET['rut_empresario'];
+
+$rut_empresario_real = base64_decode($rut_empresario);
+
+$empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 
 
 ?>
@@ -56,34 +62,15 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         <div class="row">
             <div class="col">
                 <div class="card border-white">
-                    <a href="" class="menu-button">
+                    <a href="./menu/antecedentes.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
                         <img src="../../../img/mamuts1.png" alt="Antecedentes">
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
-                    <a href="" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <hr style="color: white;" />
-
-        <div class="row">
-            <div class="col">
-                <div class="card border-white">
-                    <a href="" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
-                    </a>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card border-white">
-                    <a href="" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="./menu/presupuesto.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Presupuesto">
                     </a>
                 </div>
             </div>
@@ -94,16 +81,33 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
         <div class="row">
             <div class="col">
                 <div class="card border-white">
-                    <a href="" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="./menu/rendiciones.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Rendiciones">
                     </a>
                 </div>
             </div>
             <div class="col">
                 <div class="card border-white">
-                    <a href="" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes">
+                    <a href="./menu/subirfotos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Subir Fotos">
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <hr style="color: white;" />
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-white">
+                    <a href="./menu/archivos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
+                        <img src="../../../img/mamuts1.png" alt="Archivos">
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="transparent-element">
+                    
                 </div>
             </div>
         </div>
