@@ -51,24 +51,28 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             Subir Fotos
         </h1>
 
-        <div class="input-group mb-3">
+        <div class="row justify-content-center">
+            <div class="input-group mb-3 col">
 
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccione Etapa de Ejecucion</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione Etapa de Ejecucion</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
 
-        <div class="position-absolute top-50 start-50 translate-middle">
-            <div class="card upload-photo-button">
-                <form action="" class="image-upload">
-                    <label for="image-upload">
-                        <img src="../../../../img/mamuts1.png" alt="">
-                    </label>
-                    <input type="file" id="image-upload" />
-                </form>
+            <hr class="border-white">
+
+            <div class="col mx-auto">
+                <div class="card upload-photo-button">
+                    <form action="" class="image-upload">
+                        <label for="image-upload">
+                            <img src="../../../../img/mamuts1.png" alt="">
+                        </label>
+                        <input type="file" id="image-upload" />
+                    </form>
+                </div>
             </div>
         </div>
 

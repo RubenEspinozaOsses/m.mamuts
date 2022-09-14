@@ -55,7 +55,7 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
 
     </h1>
 
-    <div class="container justify-content-sm">
+    <div class="container justify-content-sm-center">
 
         <?php
         $sercotec_total = 0;

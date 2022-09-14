@@ -1,9 +1,68 @@
-:root {
-    --main-color: #170963;
+nav {
+    background-color: #170963;
 }
 
-.border-white {
-    border-color: white;
+body {
+    color: #170963;
+}
+#search {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#empresarios {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+
+.container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+.card {
+    background-color: transparent;
+}
+
+hr.divider { 
+    margin: 0em;
+    border-width: 0.5px;
+}
+
+.detail-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+
+.card-body {
+    padding: 0%;
+}
+
+.card-left {
+    padding-right: 0%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}
+.card-right {
+    padding-left: 0%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent
+}
+
+.col, .row {
+    padding-right: 0%;
+    padding-left: 0%;
+    margin: 0 auto;
 }
 
 .title {
@@ -11,29 +70,48 @@
     padding-top: 3%;
 }
 
-.menu-button {
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.transparent-element {
-    color: white;
+.border-white {
     border-color: white;
-    
 }
 
-nav {
-    background-color: var(--main-color);
+.card-container {
+    width: 18rem;
+    white-space: nowrap;
+    padding: 0px;
+    border-color: #170963;
+    display: inline-block;
 }
 
-img {
-    width: 65%;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    align-content: center;
-    border-color: var(--main-color);
+.card-75  {
+    padding: 0px;
+    display: inline-block;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    border-color: transparent;
+    border-right-color: #170963;
 }
 
+.no-border {
+    border-width: 0%;
+    border-radius: 0rem;
+}
+
+
+.footer-card {
+    background-color: white;
+}
+
+.on-same-line {
+    display: inline-block;
+}
+
+.zero-margin {
+    margin: 0;
+    padding-left: 0%;
+}
+
+.card-25 {
+    display: inline-block;
+    margin: auto;
+    padding-top: 25%;
+}
