@@ -1,7 +1,7 @@
 <?php
 
 include 'project_tbl_organizer.php';
-include 'presupuestos/presupuesto_tbl_organizer.php';
+include 'presupuestos/presupuesto_bp_tbl_organizer.php';
 
 class class_operar_proyectos {
 

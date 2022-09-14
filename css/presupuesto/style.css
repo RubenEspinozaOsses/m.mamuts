@@ -2,6 +2,16 @@
     --main-color: #170963;
 }
 
+.card {
+    border-color: var(--main-color);
+}
+
+.mc-divider {
+    border-color: var(--main-color);
+    height: 3%;
+    color: var(--main-color);
+}
+
 .border-white {
     border-color: white;
 }
