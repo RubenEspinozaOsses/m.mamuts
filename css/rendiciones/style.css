@@ -10,6 +10,11 @@ body {
     text-align: center;
 }
 
+img {
+    width: 30px;
+    height: 30px;
+}
+
 #empresarios {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -27,9 +32,14 @@ body {
     background-color: transparent;
 }
 
+.cancel-transparent {
+    background-color: white;
+}
+
 hr.divider { 
     margin: 0em;
     border-width: 0.5px;
+    border-color: #170963;
 }
 
 .detail-container {
@@ -39,6 +49,9 @@ hr.divider {
     padding-right: auto;
 }
 
+hr {
+    opacity: 1;
+}
 
 .card-body {
     padding: 0%;
@@ -74,6 +87,10 @@ hr.divider {
     border-color: white;
 }
 
+.border-transparent {
+    border-color: transparent;
+}
+
 .card-container {
     width: 18rem;
     white-space: nowrap;
@@ -102,7 +119,11 @@ hr.divider {
 }
 
 .on-same-line {
-    display: inline-block;
+    display: inline;
+}
+
+.card-container {
+    text-align: left;
 }
 
 .zero-margin {
@@ -110,8 +131,10 @@ hr.divider {
     padding-left: 0%;
 }
 
+
+
 .card-25 {
     display: inline-block;
     margin: auto;
-    padding-top: 25%;
+    padding: 0px;
 }

@@ -47,7 +47,7 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
     <nav class="navbar">
         <div class="container-fluid">
 
-            <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left">
+            <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
                 <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
 
             </a>
@@ -70,7 +70,6 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
         foreach ($rendiciones as $rendicion) {
             if (!in_array($rendicion->obtener_codigo_subitem(), $recolectados)) {
                 $recolectados[$i] = $rendicion->obtener_codigo_subitem();
-                // echo $recolectados[$i] . "<br>";
                 $i++;
             }
         }
@@ -99,23 +98,21 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                                 $saldo = 0;
                                 foreach ($rendiciones as $rendicion) {
                                     if ($rendicion->obtener_codigo_subitem() == $cod_si) {
-                                        $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem($codigo_bp, $cod_si, conexion::obtener_conexion()) -> obtener_subitem();
+                                        $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem($codigo_bp, $cod_si, conexion::obtener_conexion())->obtener_subitem();
                                         $cofinanciamiento += $rendicion->obtener_cofinanciamiento();
                                         $aporte_empresarial += $rendicion->obtener_aporte_empresarial();
                                     }
-                                    
                                 }
                                 foreach ($presupuestos as $presupuesto) {
                                     if ($presupuesto->obtener_codigo_subitem() == $cod_si) {
                                         $monto += $presupuesto->obtener_total_fin();
                                         $saldos_finales[$i] = $presupuesto->obtener_total_fin() - $cofinanciamiento - $aporte_empresarial;
                                     }
-                                    
                                 }
                                 $montos_finales[$i] = $monto;
 
                             ?>
-                                <div class="row card w-75 zero-margin">
+                                <div class="row card w-75 zero-margin card-container">
                                     <div class="col card w-75 card-75 zero-margin">
                                         <h6 class="card-title text-center">
                                             <?php echo $nombres_si[$i]; ?>
@@ -154,7 +151,14 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col card w-25 on-same-line card-25 zero-margin text-center no-border border-transparent">
+                                        <a href='detalles_rendiciones/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario_real) ?>&codigo_bp=<?php echo base64_encode($codigo_bp) ?>&cod_si=<?php echo base64_encode($cod_si) ?>&&nom_si=<?php echo base64_encode($nombres_si[$i])?>'>
+                                            <img src='../../../../img/mamuts1.png' alt="detalles" />
+                                        </a>
+
+                                    </div>
                                 </div>
+
 
                                 <hr class="border-white">
                             <?php

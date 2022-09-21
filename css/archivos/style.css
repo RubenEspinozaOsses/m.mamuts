@@ -1,0 +1,75 @@
+:root {
+    --main-color: #170963;
+}
+
+.title {
+    text-align: center;
+    padding-top: 2%;
+}
+
+.card-container {
+    padding-top: 2%;
+}
+
+body {
+    color: var(--main-color);
+}
+
+nav {
+    background-color: var(--main-color);
+}
+
+hr {
+    opacity: 1;
+}
+
+hr.divider {
+    padding: 0px;
+    margin: 0;
+}
+
+.middle-cc {
+    margin: 0;
+    padding: 0%;
+
+}
+
+.rect-border {
+    border-radius: 0%;
+    border-color: transparent;
+}
+
+
+.middle-cc-container {
+    margin: 0;
+    padding: 0%;
+    text-align: left;
+}
+
+.zero-margin {
+    margin: 0;
+    padding-left: 0%;
+}
+
+
+.on-same-line {
+
+    display: inline;
+}
+
+.card-container {
+    text-align: left;
+}
+
+.col,
+.row {
+    margin: 0;
+}
+
+.desglose-sa {
+    text-size-adjust: 2%;
+}
+
+.main-card {
+    margin: auto;
+}

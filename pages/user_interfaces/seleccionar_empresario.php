@@ -25,8 +25,6 @@ if (!isset($_SESSION['id_usuario'])) {
     <link rel="stylesheet" href="../../css/seleccionar_empresario/style.css">
   </head>
 
-  <!-- <body onload="load()"> -->
-
   <body>
 
     <?php
@@ -37,17 +35,10 @@ if (!isset($_SESSION['id_usuario'])) {
 
     $rut_asesor = $_SESSION['rut_usuario'];
 
-    //echo "<script type='text/javascript'>console.log('$rut_asesor')</script>";
 
     $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado($rut_asesor, conexion::obtener_conexion());
     $cantidad_empresarios = count($empresarios);
 
-    //echo "<script type='text/javascript'>console.log('$empresarios')</script>";
-
-    /*for ($i = 0; $i < $cantidad_empresarios; $i++){
-        $nombre = $empresarios[$i] -> obtener_nombre();
-        echo "<h3>$nombre</h3>";
-      }*/
 
     conexion::cerrar_conexion();
     ?>
