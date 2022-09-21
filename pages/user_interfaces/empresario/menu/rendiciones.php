@@ -57,6 +57,30 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
     <h1 class="title text-center">
         Rendiciones
     </h1>
+
+    <br>
+
+
+
+    <?php
+    function subitem_diferentes($rendiciones)
+    {
+        $recolectados = array();
+        $i = 0;
+        foreach ($rendiciones as $rendicion) {
+            if (!in_array($rendicion->obtener_codigo_subitem(), $recolectados)) {
+                $recolectados[$i] = $rendicion->obtener_codigo_subitem();
+                // echo $recolectados[$i] . "<br>";
+                $i++;
+            }
+        }
+        return $recolectados;
+    }
+    $ren_map = array();
+    $recolecados = subitem_diferentes($rendiciones);
+
+    ?>
+
     <div class="page-wrap gradient-primary">
         <div class="container">
             <div class="overflow-auto">
@@ -64,16 +88,37 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                     <div>
                         <div class="row justify-content-center">
                             <?php
+                            $montos_finales = array();
+                            $saldos_finales = array();
+                            $nombres_si = array();
                             $i = 0;
-                            $c_presupuestos = count($presupuestos);
-                            foreach ($rendiciones as $rendicion) {
+                            foreach ($recolecados as $cod_si) {
+                                $monto = 0;
+                                $cofinanciamiento = 0;
+                                $aporte_empresarial = 0;
+                                $saldo = 0;
+                                foreach ($rendiciones as $rendicion) {
+                                    if ($rendicion->obtener_codigo_subitem() == $cod_si) {
+                                        $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem($codigo_bp, $cod_si, conexion::obtener_conexion()) -> obtener_subitem();
+                                        $cofinanciamiento += $rendicion->obtener_cofinanciamiento();
+                                        $aporte_empresarial += $rendicion->obtener_aporte_empresarial();
+                                    }
+                                    
+                                }
+                                foreach ($presupuestos as $presupuesto) {
+                                    if ($presupuesto->obtener_codigo_subitem() == $cod_si) {
+                                        $monto += $presupuesto->obtener_total_fin();
+                                        $saldos_finales[$i] = $presupuesto->obtener_total_fin() - $cofinanciamiento - $aporte_empresarial;
+                                    }
+                                    
+                                }
+                                $montos_finales[$i] = $monto;
+
                             ?>
-                                <div class="row card w-50 zero-margin">
+                                <div class="row card w-75 zero-margin">
                                     <div class="col card w-75 card-75 zero-margin">
                                         <h6 class="card-title text-center">
-                                            <?php
-                                            echo $items[$i]->obtener_subitem();
-                                            ?>
+                                            <?php echo $nombres_si[$i]; ?>
                                         </h6>
                                         <hr class="divider">
                                         <div class="card-body">
@@ -86,11 +131,7 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                                                         <div class="card-body">
                                                             <h5 class="text-center">
                                                                 <?php
-                                                                    $total_presupuesto = 0;
-                                                                    foreach ($presupuestos as $presupuesto){
-                                                                        $total_presupuesto += $presupuesto -> obtener_total_fin();
-                                                                    }
-                                                                    echo $total_presupuesto;
+                                                                echo $montos_finales[$i];
                                                                 ?>
                                                             </h5>
                                                         </div>
@@ -103,7 +144,9 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                                                         </div>
                                                         <div class="card-body">
                                                             <h5 class="text-center">
-                                                                367.008
+                                                                <?php
+                                                                echo $saldos_finales[$i];
+                                                                ?>
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -111,17 +154,15 @@ $items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col on-same-line">
-                                        <a href="" class="card-link"> <img src="../../../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
-                                    </div>
                                 </div>
 
                                 <hr class="border-white">
-
                             <?php
                                 $i++;
                             }
                             ?>
+
+
                         </div>
                     </div>
                 </div>
