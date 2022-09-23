@@ -17,7 +17,10 @@ $rut_empresario_real = base64_decode($rut_empresario);
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 $empresa = null;
 $plan_trabajo = null; //elementos de proyectos
-$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion())
+$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+$codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
+$proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
+
 
 
 
@@ -166,12 +169,12 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
                                 Representate
                             </h6>
                             <p>
-                            <?php
+                                <?php
 
-                                $representate = $empresario -> obtener_representante();
+                                $representate = $empresario->obtener_representante();
 
                                 echo "$representate";
-                            ?>
+                                ?>
                             </p>
                         </div>
                     </div>
@@ -197,7 +200,7 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
                                 Rut Representante
                             </h6>
                             <p>
-                                <?php echo $empresario -> obtener_rut_representante(); ?>
+                                <?php echo $empresario->obtener_rut_representante(); ?>
                             </p>
                         </div>
 
@@ -221,9 +224,65 @@ $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresa
                     Plan de trabajo
                 </h5>
                 <div class="card-body">
-                    <p>
-                        hola
-                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Instrumento</h6>
+                            <p>
+                                <?php echo $proyecto->obtener_instrumento(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>Plan negocio</h6>
+                            <p>
+                                <?php echo $empresario->obtener_plan_negocio(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>Sercotec</h6>
+                            <p>
+                                <?php echo $empresario->obtener_cofinanciamiento(); ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Proyecto</h6>
+                            <p>
+                                <?php echo $proyecto->obtener_proyecto(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>Descripcion</h6>
+                            <p>
+                                <?php echo $empresario->obtener_descripcion(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>Aporte Empresarial</h6>
+                            <p>
+                                <?php echo $empresario->obtener_aporte_empresarial(); ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h6>Estado</h6>
+                            <p>
+                                <?php echo $proyecto->obtener_estado(); ?>
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6>Total</h6>
+                            <p>
+                                <?php
+                                $total = $empresario->obtener_aporte_empresarial() + $empresario->obtener_cofinanciamiento();
+                                echo $total;
+                                ?>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr class="border-white">

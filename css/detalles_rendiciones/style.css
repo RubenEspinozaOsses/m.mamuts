@@ -28,6 +28,11 @@ hr.divider {
     margin: 0;
 }
 
+hr.white-divider {
+    color: white;
+    background-color: white;
+}
+
 .middle-cc {
     margin: 0;
     padding: 0%;
@@ -37,7 +42,20 @@ hr.divider {
 .rect-border {
     border-radius: 0%;
     border-color: transparent;
+    padding: 0%;
 }
+
+.card-left {
+    border-right-color: var(--main-color);
+}
+
+
+.card-right {
+    border-left-color: var(--main-color);
+}
+
+
+
 
 
 .middle-cc-container {
@@ -64,12 +82,42 @@ hr.divider {
 .col,
 .row {
     margin: 0;
+    padding-bottom: 0%;
 }
 
 .desglose-sa {
-    text-size-adjust: 2%;
+    font-size: x-small;
+    font-weight: 700;
 }
 
 .main-card {
     margin: auto;
+}
+
+.card-footer {
+    padding-top: 0%;
+}
+
+
+.smaller-card {
+    height: 100%;
+}
+.card {
+    padding-bottom: 0%;
+    
+}
+
+
+
+.card-body {
+    flex: 0 1 auto !important;
+    padding-bottom: 0%;
+}
+
+.card-footer.text-center {
+    flex: 1;
+}
+
+.cancel-transparent {
+    background-color: white;
 }
