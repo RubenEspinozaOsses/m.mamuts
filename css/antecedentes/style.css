@@ -19,3 +19,7 @@
 nav {
     background-color: var(--main-color);
 }
+
+.card {
+    border-color: #170963;
+}

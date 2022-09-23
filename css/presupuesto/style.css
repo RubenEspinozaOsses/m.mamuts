@@ -2,6 +2,9 @@
     --main-color: #170963;
 }
 
+hr {
+    opacity: 1;
+}
 .card {
     border-color: var(--main-color);
 }

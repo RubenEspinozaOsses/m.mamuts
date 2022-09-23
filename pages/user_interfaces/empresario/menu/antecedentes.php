@@ -5,6 +5,7 @@ include '../../../../db/user/user_handler.php';
 include '../../../../db/formalization/formalization_handler.php';
 include '../../../../db/entrepeneur/entrepeneur_extrad_handler.php';
 include '../../../../sys/db_config.php';
+include '../../../../db/formalization/types/tipo_formalizacion_handler.php';
 
 conexion::abrir_conexion();
 
@@ -20,6 +21,7 @@ $plan_trabajo = null; //elementos de proyectos
 $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
 $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
+$tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacion(conexion::obtener_conexion());
 
 
 
@@ -292,13 +294,32 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
                 </h5>
                 <div class="card-body">
                     <?php
+                    $i = 1;
                     foreach ($formalizacion as $f) {
+                        $nombre_documento = '';
+                        foreach ($tipos_formalizacion as $t){
+                            if ($f -> obtener_tipo_documento() == $t -> obtener_tipo_documento()){
+                                $nombre_documento = $t -> obtener_nombre_documento();
+                            }
+                        }
                     ?>
-
-                        <a href="">
-                            Nombre [<?php echo $f->obtener_fecha_inicio() ?> - <?php echo $f->obtener_fecha_termino() ?>]
-                        </a>
-                        <br>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    Documento <?php echo $i++ ?>
+                                </p>
+                                <br>
+                            </div>
+                            <div class="col">
+                                <?php 
+                                    $fecha_inicio = $f->obtener_fecha_inicio();
+                                    $fecha_fin = $f->obtener_fecha_termino();
+                                    $dias_totales = (strtotime($fecha_fin) - strtotime($fecha_inicio)) / 86400;
+                                ?>
+                                <?php echo $nombre_documento; ?> del <?php echo $fecha_inicio ?> al <?php echo $fecha_fin;  ?> [<?php echo $dias_totales; ?> dias] [<?php echo round($dias_totales /30, PHP_ROUND_HALF_UP) ?> meses]
+                            </div>
+                        </div>
                     <?php
                     }
 

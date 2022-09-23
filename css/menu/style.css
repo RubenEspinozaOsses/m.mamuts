@@ -21,7 +21,7 @@
 .transparent-element {
     color: white;
     border-color: white;
-    
+
 }
 
 nav {
@@ -37,3 +37,7 @@ img {
     border-color: var(--main-color);
 }
 
+.navbar-button {
+    width: 30px;
+    height: 30px;
+}

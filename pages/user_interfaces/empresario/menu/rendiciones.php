@@ -59,9 +59,82 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
         Rendiciones
     </h1>
 
+
     <br>
 
+    <div class="card-footer row justify-content-center">
+        <button style="border-color: #170963;" class="btn btn-outline-primary w-25" type="button" data-bs-toggle="collapse" data-bs-target="#plan-trabajo" aria-expanded="false" aria-controls="plan-trabajo">
+            Plan Trabajo
+        </button>
+        <div class="container">
+            <div class="collapse" id="plan-trabajo">
+                <div class="card">
 
+                    <div class="card-body plan-trabajo">
+                        <div class="row">
+                            <div class="col">
+                                <h6>Instrumento</h6>
+                                <p>
+                                    <?php echo $proyecto->obtener_instrumento(); ?>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h6>Plan negocio</h6>
+                                <p>
+                                    <?php echo $empresario->obtener_plan_negocio(); ?>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h6>Sercotec</h6>
+                                <p>
+                                    <?php echo $empresario->obtener_cofinanciamiento(); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <h6>Proyecto</h6>
+                                <p>
+                                    <?php echo $proyecto->obtener_proyecto(); ?>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h6>Descripcion</h6>
+                                <p>
+                                    <?php echo $empresario->obtener_descripcion(); ?>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h6>Aporte Empresarial</h6>
+                                <p>
+                                    <?php echo $empresario->obtener_aporte_empresarial(); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <h6>Estado</h6>
+                                <p>
+                                    <?php echo $proyecto->obtener_estado(); ?>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h6>Total</h6>
+                                <p>
+                                    <?php
+                                    $total = $empresario->obtener_aporte_empresarial() + $empresario->obtener_cofinanciamiento();
+                                    echo $total;
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php
     function subitem_diferentes($rendiciones)
@@ -160,79 +233,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
 
                                     </div>
 
-                                    <div class="card-footer row justify-content-center" style="display: none;">
-                                        <button class="btn btn-primary w-25" type="button" data-bs-toggle="collapse" data-bs-target="#plan-trabajo" aria-expanded="false" aria-controls="plan-trabajo">
-                                            Plan Trabajo
-                                        </button>
-                                        <div class="container">
-                                            <div class="collapse" id="plan-trabajo">
-                                                <div class="card">
 
-                                                    <div class="card-body plan-trabajo">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6>Instrumento</h6>
-                                                                <p>
-                                                                    <?php echo $proyecto->obtener_instrumento(); ?>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h6>Plan negocio</h6>
-                                                                <p>
-                                                                    <?php echo $empresario->obtener_plan_negocio(); ?>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h6>Sercotec</h6>
-                                                                <p>
-                                                                    <?php echo $empresario->obtener_cofinanciamiento(); ?>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6>Proyecto</h6>
-                                                                <p>
-                                                                    <?php echo $proyecto->obtener_proyecto(); ?>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h6>Descripcion</h6>
-                                                                <p>
-                                                                    <?php echo $empresario->obtener_descripcion(); ?>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h6>Aporte Empresarial</h6>
-                                                                <p>
-                                                                    <?php echo $empresario->obtener_aporte_empresarial(); ?>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <h6>Estado</h6>
-                                                                <p>
-                                                                    <?php echo $proyecto->obtener_estado(); ?>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h6>Total</h6>
-                                                                <p>
-                                                                    <?php
-                                                                    $total = $empresario->obtener_aporte_empresarial() + $empresario->obtener_cofinanciamiento();
-                                                                    echo $total;
-                                                                    ?>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
 
