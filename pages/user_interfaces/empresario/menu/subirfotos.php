@@ -54,25 +54,23 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
         <div class="row justify-content-center">
             <div class="input-group mb-3 col">
 
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Seleccione Etapa de Ejecucion</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="form-select" aria-label="Default select example" aria-placeholder="Seleccione tipo de ejecucion">
+                    <option value="1">[1] Evaluacion</option>
+                    <option value="2">[2] Formalizacion</option>
+                    <option value="3">[3] Adquisicion</option>
+                    <option value="4">[4] Seguimiento</option>
                 </select>
             </div>
 
             <hr class="border-white">
 
-            <div class="col mx-auto">
-                <div class="card upload-photo-button">
-                    <form action="" class="image-upload">
-                        <label for="image-upload">
-                            <img src="../../../../img/mamuts1.png" alt="">
-                        </label>
-                        <input type="file" id="image-upload" />
-                    </form>
-                </div>
+            <div class="card upload-photo-button required">
+                <form action="../../../../middlewares/subirfoto.php" class="image-upload">
+                    <label for="image-upload">
+                        <img src="../../../../img/mamuts1.png" alt="">
+                    </label>
+                    <input type="file" id="image-upload" name="archivo[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif"/>
+                </form>
             </div>
         </div>
 

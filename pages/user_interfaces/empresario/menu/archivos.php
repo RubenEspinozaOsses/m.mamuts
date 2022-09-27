@@ -68,21 +68,49 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
 
           ?>
             <div class="row overflow-auto">
+              <?php
+              $nombre = $a->obtener_archivo();
+              $extension = $a->obtener_extension();
+              $ruta = $a->obtener_ruta();
+
+              $descripcion = $a->obtener_descripcion();
+              $ruta_base = '../../../../';
+              $icono = '';
+              switch ($extension) {
+                case 'jpg':
+                  $icono = $ruta_base . 'img/jpg.png';
+                  break;
+                case 'png':
+                  $icono = $ruta_base . 'img/png.png';
+                  break;
+                case 'jpeg':
+                  $icono = $ruta_base . 'img/jpeg.png';
+                  break;
+                case 'pdf':
+                  $icono = $ruta_base . 'img/pdf.png';
+                  break;
+                case 'docx':
+                  $icono = $ruta_base . 'img/docx.png';
+                  break;
+                case 'doc':
+                  $icono = $ruta_base . 'img/doc.png';
+                  break;
+                default:
+                  $icono = $ruta_base . 'img/mamuts1.png';
+                  break;
+              }
+              ?>
               <div class="col d-flex justify-content-center">
-                <img src="../../../../img/mamuts1.png" class="file-icon" alt="Icono" />
+                <img src="<?php echo $icono ?>" class="file-icon" alt="Icono" />
               </div>
               <div class="col d-flex justify-content-center file-name">
                 <?php
-                $nombre = $a->obtener_archivo();
-                $extension = $a->obtener_extension();
-                $ruta = $a->obtener_ruta();
-
-                $descripcion = $a->obtener_descripcion();
                 echo $nombre . "." . $extension;
                 ?>
               </div>
               <div class="col d-flex justify-content-center align-middle">
-                <img src="../../../../img/mamuts1.png" alt="Descargar">
+
+                <a href="../<?php echo $ruta_base . "cdx/" . $ruta . "/" . $nombre . "." . $extension ?>"><img src="../../../../img/mamuts1.png" alt="Descargar"></a>
               </div>
               <hr>
             </div>
