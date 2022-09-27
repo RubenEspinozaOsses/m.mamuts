@@ -21,6 +21,10 @@ body {
     padding-top: 3%;
 }
 
+.is-hidden {
+    display: none!important;
+}
+
 
 .detail-container {
     margin-left: auto;

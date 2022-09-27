@@ -4,6 +4,7 @@ include '../../../../db/projects/project_handler.php';
 include '../../../../db/user/user_handler.php';
 include '../../../../db/formalization/formalization_handler.php';
 include '../../../../db/entrepeneur/entrepeneur_extrad_handler.php';
+include '../../../../db/projects/rendiciones/archivos/archivos_handler.php';
 include '../../../../sys/db_config.php';
 
 conexion::abrir_conexion();
@@ -15,6 +16,7 @@ $rut_empresario = $_GET['rut_empresario'];
 $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
+$archivos = class_operar_archivos::listar_archivos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
 
 
 ?>
@@ -37,19 +39,74 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
 
   <nav class="navbar">
     <div class="container-fluid">
-      
+
       <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
-        <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black" >
+        <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
 
       </a>
     </div>
   </nav>
 
-  
+  <h1 class="title text-center">
+    Descargar Archivos
+  </h1>
+
+  <div class="container-fluid d-flex justify-content-center">
+    <input type="text" id="textfield" placeholder="Buscar archivos" class="form-control w-50" onkeyup="buscar()">
+    </input>
+
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="card w-100">
+        <div id="file-container" class="card-body">
+          <?php
+          $id = 0;
+          foreach ($archivos as $a) {
+
+
+          ?>
+            <div class="row overflow-auto">
+              <div class="col d-flex justify-content-center">
+                <img src="../../../../img/mamuts1.png" class="file-icon" alt="Icono" />
+              </div>
+              <div class="col d-flex justify-content-center file-name">
+                <?php
+                $nombre = $a->obtener_archivo();
+                $extension = $a->obtener_extension();
+                $ruta = $a->obtener_ruta();
+
+                $descripcion = $a->obtener_descripcion();
+                echo $nombre . "." . $extension;
+                ?>
+              </div>
+              <div class="col d-flex justify-content-center align-middle">
+                <img src="../../../../img/mamuts1.png" alt="Descargar">
+              </div>
+              <hr>
+            </div>
+
+
+          <?php
+          }
+          ?>
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script src="../../../../js/pages/user_interfaces/archivos/files.js"></script>
 </body>
 
 </html>

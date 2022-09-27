@@ -53,8 +53,14 @@ hr {
     opacity: 1;
 }
 
-.card-body {
-    padding: 0%;
+.is-hidden {
+    display: none!important;
+}
+
+
+
+.file-name {
+    font-size: 10px;
 }
 
 .plan-trabajo {
@@ -142,3 +148,9 @@ hr {
     margin: auto;
     padding: 0px;
 }
+
+.file-icon {
+    width: 30px;
+    height: 30px;
+}
+
