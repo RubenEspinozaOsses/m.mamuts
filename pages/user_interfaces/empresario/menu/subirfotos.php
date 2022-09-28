@@ -65,11 +65,12 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <hr class="border-white">
 
             <div class="card upload-photo-button required">
-                <form action="../../../../middlewares/subirfoto.php" class="image-upload">
-                    <label for="image-upload">
+                <form action="../../../../middlewares/subirfoto.php?rut_empresario=<?php echo $rut_empresario ?>" class="image-upload" method="POST" id="subir-archivos" enctype="multipart/form-data">
+                    <label for="archivos">
                         <img src="../../../../img/mamuts1.png" alt="">
                     </label>
-                    <input type="file" id="image-upload" name="archivo[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif"/>
+                    <input type="file" id="archivos" name="archivos[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif" multiple="multiple" onchange="submit_automatically();"/>
+                    
                 </form>
             </div>
         </div>
@@ -81,6 +82,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script src="../../../../js/pages/user_interfaces/empresario/menu/subirfotos.js"></script>
 </body>
 
 </html>
