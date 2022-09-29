@@ -41,7 +41,7 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
     <div class="container-fluid">
 
       <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
-        <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
+        <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
       </a>
     </div>

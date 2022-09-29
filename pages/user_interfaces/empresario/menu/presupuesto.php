@@ -44,7 +44,7 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
         <div class="container-fluid">
 
             <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left">
-                <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
+                <img src="../../../../img/back.png" alt="" class="navbar-button">
 
             </a>
         </div>
@@ -75,7 +75,7 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
 
                     ?>
                 </h5>
-                <div class="card">
+                <div class="card card-presupuesto">
                     <div class="row">
                         <div class="col no-right">
                             <div class="card card-left">

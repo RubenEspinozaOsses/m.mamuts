@@ -49,7 +49,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
         <div class="container-fluid">
 
             <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
-                <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
+                <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
         </div>
@@ -228,7 +228,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
                                     <div class="col card w-25 on-same-line card-25 zero-margin text-center no-border border-transparent">
 
                                         <a href='detalles_rendiciones/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario_real) ?>&codigo_bp=<?php echo base64_encode($codigo_bp) ?>&cod_si=<?php echo base64_encode($cod_si) ?>&&nom_si=<?php echo base64_encode($nombres_si[$i]) ?>'>
-                                            <img src='../../../../img/mamuts1.png' alt="detalles" />
+                                            <img src='../../../../img/buscar.png' alt="detalles" />
                                         </a>
 
                                     </div>

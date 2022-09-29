@@ -29,7 +29,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
 
 $c = 0;
 foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
-
+    echo "hola";
     $c = $c + 1;
     $fname = array();
     $fname = explode(".", $_FILES['archivos']['name'][$key]);
@@ -61,8 +61,8 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         $error_info = '';
         $codigo_archivo = chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9);
         $archivo_nuevo = $empresarios->obtener_rut_razon_social() . '_' . $codigo_bp . '_' . $codigo_archivo;
-
-        $grupo = $_POST['descripcion'];
+        $ruta = $codigo_bp . '/' . $empresarios->obtener_rut_razon_social();
+        $grupo = 'test';
         $descripcion = tipo_arc($grupo);
         $tipo_archivo = tipo_ext($extension_archivo);
         $fecha = date("Y-m-d");
@@ -78,13 +78,15 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         }
 
         conexion::abrir_conexion();
-        $archivos = new class_tabla_archivos('', $codigo_empresario, $archivo_nuevo, $extension_archivo, $ruta, $descripcion, $tipo_archivo, $fecha, $asignacion, $grupo);
+
+        $archivos = new class_tabla_archivos('', $empresarios -> obtener_codigo_empresario(), $archivo_nuevo, $extension_archivo, $ruta, $descripcion, $tipo_archivo, $fecha, $asignacion, $grupo);
         $archivos_insertado = class_operar_archivos::insertar_archivos($archivos, conexion::obtener_conexion());
-        move_uploaded_file($_FILES['archivo']['tmp_name'][$key], 'cdx/' . $ruta . '/' . $_FILES['archivo']['name'][$key]);
-        rename('cdx/' . $ruta . '/' . $_FILES['archivo']['name'][$key], 'cdx/' . $ruta . '/' . $archivo_nuevo . '.' . $extension_archivo);
+        move_uploaded_file($_FILES['archivos']['tmp_name'][$key], 'cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key]);
+        rename('cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key], 'cdx/' . $ruta . '/' . $archivo_nuevo . '.' . $extension_archivo);
         conexion::cerrar_conexion();
         $error = '<img src=' . '"imgx/123.png"' . 'height=15px width=15px>';
     }
 
     echo '<div class="col-md-4">' . $error . '&nbsp;&nbsp;' . $nombre_archivo . '.' . $extension_archivo . $error_info . '</div>';
 }
+?>

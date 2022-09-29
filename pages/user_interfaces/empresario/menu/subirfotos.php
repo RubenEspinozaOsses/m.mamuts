@@ -39,7 +39,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
         <div class="container-fluid">
 
             <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left">
-                <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
+                <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
         </div>

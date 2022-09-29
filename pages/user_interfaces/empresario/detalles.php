@@ -34,7 +34,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
     <div class="container-fluid">
       
       <a href="../seleccionar_empresario.php" class="card navbar-left">
-        <img src="../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black" >
+        <img src="../../../img/back.png" alt="" width="30" height="30" background-color="black" >
 
       </a>
     </div>

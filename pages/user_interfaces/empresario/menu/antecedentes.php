@@ -48,7 +48,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
         <div class="container-fluid">
 
             <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left">
-                <img src="../../../../img/mamuts1.png" alt="" width="30" height="30" background-color="black">
+                <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
         </div>
@@ -310,6 +310,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                                     Documento <?php echo $i++ ?>
                                 </p>
                                 <br>
+                                <hr class="border-white">
                             </div>
                             <div class="col">
                                 <?php 

@@ -46,14 +46,11 @@ if (!isset($_SESSION['id_usuario'])) {
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
-          <img src="../../img/mamuts1.png" alt="" width="30" height="24">
+          <img src="../../img/buscar.png" alt="" width="30" height="30">
         </a>
 
 
-        <a href="" class="card" onclick="">
-          <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black">
-
-        </a>
+        
       </div>
 
 
@@ -105,14 +102,14 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
                       <div class="card-footer text-center row" style="background-color: white;">
-                        <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
+                        <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/details.png" alt="" width="30" height="24" background-color="black"></a>
                       </div>
 
                     </div>
                   </div>
 
                   <div class="w-25 col text-center align-top card-25">
-                    <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/mamuts1.png" alt="" width="30" height="24" background-color="black"></a>
+                    <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/menu.png" alt="" width="30" height="24" background-color="black"></a>
                   </div>
 
                 </div>

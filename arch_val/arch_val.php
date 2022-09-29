@@ -1,6 +1,7 @@
 <?php
 
 function tipo_arc($grupo) {
+    $tipo_grupo = '';
     if ($grupo == 1) {
         $tipo_grupo = "Documento Contable";
     }
@@ -143,6 +144,7 @@ function tipo_ext($extension_archivo) {
 }
 
 function tipo_doc($doc) {
+    $tipo_doc = 'Sin Información';
     if ($doc == "Boleta de Honorarios") {
         $tipo_doc = "BH";
     }

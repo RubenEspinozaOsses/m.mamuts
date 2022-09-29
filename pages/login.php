@@ -46,7 +46,7 @@
 
     <div style="text-align:center;">
       <button type="submit" class="btn btn-primary" id="login">
-        <img src="../img/mamuts1.png" alt="LogIn" style="width:32px; height:32px; border-color: #170963;">
+        <img src="../img/login.png" alt="LogIn" style="width:32px; height:32px; border-color: #170963;">
       </button>
     </div>
   </form>

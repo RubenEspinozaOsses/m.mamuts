@@ -160,9 +160,12 @@ class class_operar_archivos {
                         :grupo
                         )";
 
-                $sentencia = $conexion->prepare($sql);
+                
 
+                $sentencia = $conexion->prepare($sql);
+                
                 $value_id = $archivos->obtener_id();
+                
                 $value_codigo_empresario = $archivos->obtener_codigo_empresario();
                 $value_archivo = $archivos->obtener_archivo();
                 $value_extension = $archivos->obtener_extension();
@@ -183,7 +186,6 @@ class class_operar_archivos {
                 $sentencia->bindParam(':fecha', $value_fecha, PDO::PARAM_STR);
                 $sentencia->bindParam(':asignacion', $value_asignacion, PDO::PARAM_STR);
                 $sentencia->bindParam(':grupo', $value_grupo, PDO::PARAM_STR);
-
                 $archivos_insertado = $sentencia->execute();
             } catch (PDOException $ex) {
                 print 'ERROR' . $ex->getMessage();

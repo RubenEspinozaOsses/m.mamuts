@@ -41,7 +41,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
         <div class="container-fluid">
 
             <a href="../seleccionar_empresario.php" class="card navbar-left">
-                <img src="../../../img/mamuts1.png" alt="" class="navbar-button">
+                <img src="../../../img/back.png" alt="" class="navbar-button">
 
             </a>
         </div>
@@ -63,7 +63,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/antecedentes.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Antecedentes"><br>
+                        <img src="../../../img/antecedentes.png" alt="Antecedentes" class="menu-icon"><br>
                         <h6>Antecedentes</h6>
                     </a>
                     
@@ -72,7 +72,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/presupuesto.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Presupuesto"><br>
+                        <img src="../../../img/presupuesto.png" alt="Presupuesto" class="menu-icon"><br>
                         <h6>Presupuesto</h6>
                     </a>
                 </div>
@@ -85,7 +85,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/rendiciones.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Rendiciones"><br>
+                        <img src="../../../img/rendiciones.png" alt="Rendiciones" class="menu-icon"><br>
                         <h6>Rendiciones</h6>
                     </a>
                 </div>
@@ -93,7 +93,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/subirfotos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Subir Fotos"><br>
+                        <img src="../../../img/subirfoto.png" alt="Subir Fotos" class="menu-icon"><br>
                         <h6>Subir Fotos</h6>
                     </a>
                 </div>
@@ -106,7 +106,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             <div class="col">
                 <div class="card border-white">
                     <a href="./menu/archivos.php?rut_empresario=<?php echo $rut_empresario ?>" class="menu-button">
-                        <img src="../../../img/mamuts1.png" alt="Archivos"><br>
+                        <img src="../../../img/archivos.png" alt="Archivos" class="menu-icon"><br>
                         <h6>Archivos</h6>
                     </a>
                 </div>
