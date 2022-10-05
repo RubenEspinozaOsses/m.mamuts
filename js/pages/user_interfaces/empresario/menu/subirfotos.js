@@ -1,3 +1,7 @@
 function submit_automatically(){
-    document.getElementById('subir-archivos').submit();
+
+    if (document.getElementById('archivos').files.length > 0 && document.getElementById('eta-ejecucion').value != 0){
+        document.getElementById('form-archivos').submit();
+    }
+    
 }

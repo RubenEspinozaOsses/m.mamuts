@@ -5,7 +5,7 @@ function buscar(){
     
     
 
-    let value = textfield.value;
+    let value = textfield.value.toLowerCase();
 
 
     
@@ -14,7 +14,7 @@ function buscar(){
 
     for (const card of cards) {
 
-        if (card.innerText.includes(value)){
+        if (card.innerText.toLowerCase().includes(value)){
             card.parentNode.closest('.row').classList.remove('is-hidden')
         }else {
             card.parentNode.closest('.row').classList.add('is-hidden')

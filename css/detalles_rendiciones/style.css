@@ -46,12 +46,16 @@ hr.white-divider {
 }
 
 .card-left {
-    border-right-color: var(--main-color);
+    border-color: transparent !important;
+    border-right-color: var(--main-color) !important;
+    border-bottom-color: var(--main-color)!important;
 }
 
 
 .card-right {
-    border-left-color: var(--main-color);
+    border-color: transparent !important;
+    border-left-color: var(--main-color)!important;
+    border-bottom-color: var(--main-color)!important;
 }
 
 
@@ -101,10 +105,12 @@ hr.white-divider {
 
 .smaller-card {
     height: 100%;
+    border-top: transparent;
+    border-right: transparent;
 }
 .card {
     padding-bottom: 0%;
-    
+    border-color: #170963;
 }
 
 

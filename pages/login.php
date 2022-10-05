@@ -45,7 +45,7 @@
 
 
     <div style="text-align:center;">
-      <button type="submit" class="btn btn-primary" id="login">
+      <button type="submit" class="btn btn-outline-primary" id="login">
         <img src="../img/login.png" alt="LogIn" style="width:32px; height:32px; border-color: #170963;">
       </button>
     </div>

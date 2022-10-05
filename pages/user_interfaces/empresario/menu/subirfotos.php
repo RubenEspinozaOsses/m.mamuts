@@ -52,27 +52,37 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
         </h1>
 
         <div class="row justify-content-center">
-            <div class="input-group mb-3 col">
+            <form action="../../../../middlewares/subirfoto.php?rut_empresario=<?php echo $rut_empresario ?>" method="POST" id="form-archivos" enctype="multipart/form-data">
+                <div class="input-group mb-3 col">
+                    <select class="form-select" aria-label="Default select example" id="eta-ejecucion" name="eta-ejecucion" aria-placeholder="">
 
-                <select class="form-select" aria-label="Default select example" aria-placeholder="Seleccione tipo de ejecucion">
-                    <option value="1">[1] Evaluacion</option>
-                    <option value="2">[2] Formalizacion</option>
-                    <option value="3">[3] Adquisicion</option>
-                    <option value="4">[4] Seguimiento</option>
-                </select>
-            </div>
+                        <option value="0" selected disabled>Seleccione tipo de ejecucion</option>
+                        <option value="1">[1] Evaluacion</option>
+                        <option value="2">[2] Formalizacion</option>
+                        <option value="3">[3] Adquisicion</option>
+                        <option value="4">[4] Seguimiento</option>
 
-            <hr class="border-white">
+                    </select>
 
-            <div class="card upload-photo-button required">
-                <form action="../../../../middlewares/subirfoto.php?rut_empresario=<?php echo $rut_empresario ?>" class="image-upload" method="POST" id="subir-archivos" enctype="multipart/form-data">
+                </div>
+                <hr class="border-white">
+
+                <div class="card upload-photo-button required w-50">
                     <label for="archivos">
                         <img src="../../../../img/mamuts1.png" alt="">
                     </label>
-                    <input type="file" id="archivos" name="archivos[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif" multiple="multiple" onchange="submit_automatically();"/>
-                    
-                </form>
-            </div>
+                    <div class="image-upload">
+                        <input type="file" id="archivos" name="archivos[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif" multiple onchange="submit_automatically();" />
+                    </div>
+
+
+
+                </div>
+
+            </form>
+
+
+
         </div>
 
     </div>
