@@ -87,7 +87,8 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         conexion::cerrar_conexion();
         $error = '<img src=' . '"imgx/123.png"' . 'height=15px width=15px>';
     }
-
-    #echo '<div class="col-md-4">' . $error . '&nbsp;&nbsp;' . $nombre_archivo . '.' . $extension_archivo . $error_info . '</div>';
+    echo '<div class="col-md-4">' . $error . '&nbsp;&nbsp;' . $nombre_archivo . '.' . $extension_archivo . $error_info . '</div>';
+    
 }
+header('Refresh:1;url=../pages/user_interfaces/empresario/menu/subirfotos.php?rut_empresario='.$rut_empresario);
 ?>

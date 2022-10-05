@@ -93,13 +93,13 @@ foreach ($rendiciones as $rendicion) {
                             <div class="middle-cc col on-same-line">
                                 <div class="card rect-border zero-margin card-left smaller-card">
                                     <div class="card-title">
-                                        <h6 class="text-center">
+                                        <h6 class="text-center" id="sercapor">
                                             Sercotec + Aporte
                                         </h6>
                                     </div>
                                     <hr class="divider">
                                     <div class="card-body">
-                                        <p class="desglose-sa text-center">
+                                        <p class="desglose-sa text-center" id="detsercapor">
                                             ( <?php echo $rendicion -> obtener_cofinanciamiento() ?> + <?php echo $rendicion -> obtener_aporte_empresarial() ?> )
                                         </p>
                                         <div class="card-title text-center">
