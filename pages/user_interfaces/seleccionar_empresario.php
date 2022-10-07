@@ -36,7 +36,11 @@ if (!isset($_SESSION['id_usuario'])) {
     $rut_asesor = $_SESSION['rut_usuario'];
 
 
-    $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado($rut_asesor, conexion::obtener_conexion());
+    $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
+      $rut_asesor,
+      conexion::obtener_conexion()
+    );
+
     $cantidad_empresarios = count($empresarios);
 
 
@@ -45,7 +49,13 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
+        <a
+        class="navbar-brand ml-auto"
+        href="#"
+        data-bs-toggle="collapse"
+        data-bs-target="#search"
+        aria-expanded="false"
+        aria-controls="search">
           <img src="../../img/buscar.png" alt="" width="30" height="30">
         </a>
 
@@ -82,17 +92,22 @@ if (!isset($_SESSION['id_usuario'])) {
             <?php
             for ($i = 0; $i < $cantidad_empresarios; $i++) {
               $nombre = $empresarios[$i]->obtener_nombre();
+              $apellido_paterno = $empresarios[$i]->obtener_apellido_paterno();
+              $apellido_materno = $empresarios[$i]->obtener_apellido_materno();
               $rut_empresa = $empresarios[$i]->obtener_rut_razon_social();
               $rut_empresario = $empresarios[$i]->obtener_rut();
             ?>
 
 
               <div class="row d-flex justify-content-center detail-container">
-                <div class="card col-md-6 card-container">
-                  <div class="card w-75 card-75">
+                <div class="card col-md-6 card-container w-100">
+                  <div class="card">
                     <div class="card-body">
                       <div class="col-3">
-                        <h5 class="card-title col"><?php echo $nombre ?></h5>
+                        <h5 class="card-title col"><?php echo $apellido_paterno . " "
+                        . $apellido_materno . ", "
+                        . $nombre ?>
+                        </h5>
                       </div>
                       <div class="col-3">
                         <h6 class="card-subtitle mb-2 text-muted col-3">Rut Empresa</h6>
@@ -102,15 +117,18 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
                       <div class="card-footer text-center row" style="background-color: white;">
-                        <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles <img src="../../img/details.png" alt="" width="30" height="24" background-color="black"></a>
+                        <a
+                        href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>"
+                        class="card-link col">Detalles</a>
+
+                        <a
+                        href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>"
+                        class="card-link col">Menu</a>
                       </div>
 
                     </div>
                   </div>
 
-                  <div class="w-25 col text-center align-top card-25">
-                    <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col"> <img src="../../img/menu.png" alt="" width="30" height="24" background-color="black"></a>
-                  </div>
 
                 </div>
                 <hr style="color: white;" />
