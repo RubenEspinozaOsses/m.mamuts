@@ -81,10 +81,10 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
                   $icono = $ruta_base . 'img/jpg.png';
                   break;
                 case 'png':
-                  $icono = $ruta_base . 'img/png.png';
+                  $icono = $ruta_base . 'img/jpg.png';
                   break;
                 case 'jpeg':
-                  $icono = $ruta_base . 'img/jpeg.png';
+                  $icono = $ruta_base . 'img/jpg.png';
                   break;
                 case 'pdf':
                   $icono = $ruta_base . 'img/pdf.png';
@@ -93,7 +93,7 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
                   $icono = $ruta_base . 'img/docx.png';
                   break;
                 case 'doc':
-                  $icono = $ruta_base . 'img/doc.png';
+                  $icono = $ruta_base . 'img/docx.png';
                   break;
                 default:
                   $icono = $ruta_base . 'img/mamuts1.png';
@@ -110,7 +110,7 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
               </div>
               <div class="col d-flex justify-content-center align-middle">
 
-                <a href="../<?php echo $ruta_base . "cdx/" . $ruta . "/" . $nombre . "." . $extension ?>"><img src="../../../../img/mamuts1.png" alt="Descargar"></a>
+                <a href="../<?php echo $ruta_base . "cdx/" . $ruta . "/" . $nombre . "." . $extension ?>"><img src="../../../../img/down.png" alt="Descargar"></a>
               </div>
               <hr>
             </div>

@@ -85,7 +85,7 @@ foreach ($rendiciones as $rendicion) {
 
                         <div class="card-title title">
                             <h5 class="text-center align-middle">
-                                Factura electronica numero <?php echo $rendicion -> obtener_numero_documento() ?>
+                                Factura electronica numero <?php echo $rendicion->obtener_numero_documento() ?>
                             </h5>
                         </div>
                         <hr class="divider">
@@ -93,23 +93,24 @@ foreach ($rendiciones as $rendicion) {
                             <div class="middle-cc col on-same-line">
                                 <div class="card rect-border zero-margin card-left smaller-card">
                                     <div class="card-title">
-                                        <h6 class="text-center" id="sercapor">
-                                            Sercotec + Aporte
+                                        <h6 class="text-center">
+                                            SCT + Aporte
                                         </h6>
                                     </div>
                                     <hr class="divider">
                                     <div class="card-body">
-                                        <p class="desglose-sa text-center" id="detsercapor">
-                                            ( <?php echo $rendicion -> obtener_cofinanciamiento() ?> + <?php echo $rendicion -> obtener_aporte_empresarial() ?> )
-                                        </p>
                                         <div class="card-title text-center">
                                             <h4>
                                                 <?php
-                                                    $sa = ($rendicion -> obtener_aporte_empresarial() + $rendicion -> obtener_cofinanciamiento());
-                                                    echo $sa;
+                                                $sa = ($rendicion->obtener_aporte_empresarial() + $rendicion->obtener_cofinanciamiento());
+                                                echo $sa;
                                                 ?>
                                             </h4>
                                         </div>
+                                        <p class="desglose-sa text-center" id="detsercapor">
+                                            ( <?php echo $rendicion->obtener_cofinanciamiento() ?> + <?php echo $rendicion->obtener_aporte_empresarial() ?> )
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +127,7 @@ foreach ($rendiciones as $rendicion) {
                                         <div class="card-title">
                                             <h4 class="text-center align-middle">
                                                 <?php
-                                                    echo $rendicion -> obtener_aporte_extra();
+                                                echo $rendicion->obtener_aporte_extra();
                                                 ?>
                                             </h4>
                                         </div>
@@ -145,7 +146,7 @@ foreach ($rendiciones as $rendicion) {
 
                                         <div class="card-title text-center">
                                             <h4>
-                                                <?php echo $rendicion-> obtener_total_con_iva() ?>
+                                                <?php echo $rendicion->obtener_total_con_iva() ?>
                                             </h4>
                                         </div>
                                     </div>
@@ -153,7 +154,7 @@ foreach ($rendiciones as $rendicion) {
                             </div>
                         </div>
                         <div class="card-footer text-center align-middle">
-                            <h6>Pagado [<?php echo $rendicion -> obtener_fecha_pago(); ?>]</h6>
+                            <h6>Pagado [<?php echo $rendicion->obtener_fecha_pago(); ?>]</h6>
                         </div>
 
                     </div>
