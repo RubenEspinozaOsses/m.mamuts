@@ -18,9 +18,18 @@ $rut_empresario_real = base64_decode($rut_empresario);
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 $empresa = null;
 $plan_trabajo = null; //elementos de proyectos
-$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
-$codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
-$proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
+$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+
+$codigo_bp = explode(
+    '-',
+    $empresario->obtener_codigo_empresario())[0];
+
+$proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
+    $codigo_bp,
+    conexion::obtener_conexion());
+
 $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacion(conexion::obtener_conexion());
 
 
@@ -38,7 +47,12 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous">
+
     <link rel="stylesheet" href="../../../../css/antecedentes/style.css">
 </head>
 
@@ -279,7 +293,8 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                             <h6>Total</h6>
                             <p>
                                 <?php
-                                $total = $empresario->obtener_aporte_empresarial() + $empresario->obtener_cofinanciamiento();
+                                $total = $empresario->obtener_aporte_empresarial()
+                                + $empresario->obtener_cofinanciamiento();
                                 echo $total;
                                 ?>
                             </p>
@@ -313,12 +328,22 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                                 <hr class="border-white">
                             </div>
                             <div class="col">
-                                <?php 
+                                <?php
                                     $fecha_inicio = $f->obtener_fecha_inicio();
                                     $fecha_fin = $f->obtener_fecha_termino();
                                     $dias_totales = (strtotime($fecha_fin) - strtotime($fecha_inicio)) / 86400;
                                 ?>
-                                <?php echo $nombre_documento; ?> del <?php echo $fecha_inicio ?> al <?php echo $fecha_fin;  ?> [<?php echo $dias_totales; ?> dias] [<?php echo round($dias_totales /30, PHP_ROUND_HALF_UP) ?> meses]
+                                <?php
+                                    echo $nombre_documento;
+                                ?> del <?php
+                                    echo $fecha_inicio
+                                ?> al <?php
+                                    echo $fecha_fin;
+                                ?> [<?php
+                                        echo $dias_totales;
+                                    ?> dias] [<?php
+                                        echo round($dias_totales /30, PHP_ROUND_HALF_UP)
+                                    ?> meses]
                             </div>
                         </div>
                     <?php
@@ -339,9 +364,16 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
 
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

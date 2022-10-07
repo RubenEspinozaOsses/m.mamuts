@@ -20,9 +20,14 @@ $rut_empresario = $_GET['rut_empresario'];
 $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresarios = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
-$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresarios->obtener_codigo_empresario(), conexion::obtener_conexion());
+$formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario(
+    $empresarios->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+
 $codigo_bp = explode('-', $empresarios->obtener_codigo_empresario())[0];
+
 $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
+
 $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacion(conexion::obtener_conexion());
 
 
@@ -49,26 +54,40 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         $error_txt = 'Archivo mayor a 15 MB';
     }
 
-    if (tipo_ext($extension_archivo) !== "Imagen") {
+    if (tipoExt($extension_archivo) !== "Imagen") {
         $error_subir = $error_subir + 1;
         $error_txt = 'No es un archivo imagen';
     }
 
     if ($error_subir > 0) {
         $error = '<img src=' . '"imgx/122.png"' . 'height=15px width=15px>';
-        $error_info = '&nbsp;&nbsp;<img src=' . '"imgx/067.png"' . 'height=15px width=15px data-toggle="tooltip" data-placement="right" title="' . $error_txt . '">';
+        $error_info =
+        '&nbsp;&nbsp;<img src=' .
+        '"imgx/067.png"' .
+        'height=15px width=15px data-toggle="tooltip" data-placement="right" title="'
+        . $error_txt .
+        '">';
     } else {
         $error_info = '';
-        $codigo_archivo = chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(1, 9);
+        $codigo_archivo =
+        chr(rand(65, 90))
+        . rand(1, 9)
+        . chr(rand(65, 90))
+        . rand(1, 9)
+        . chr(rand(65, 90))
+        . rand(1, 9)
+        . chr(rand(65, 90))
+        . rand(1, 9);
+
         $archivo_nuevo = $empresarios->obtener_rut_razon_social() . '_' . $codigo_bp . '_' . $codigo_archivo;
         $ruta = $codigo_bp . '/' . $empresarios->obtener_rut_razon_social();
         $eta_ejecucion = $_POST['eta-ejecucion'];
         $grupo = 'fot-'.$eta_ejecucion;
-        $descripcion = tipo_arc($grupo);
-        $tipo_archivo = tipo_ext($extension_archivo);
+        $descripcion = tipoArc($grupo);
+        $tipo_archivo = tipoExt($extension_archivo);
         $fecha = date("Y-m-d");
         $asignacion = '-----';
-        $sigla = tipo_doc($descripcion);
+        $sigla = tipoDoc($descripcion);
         $archivo_nuevo = $archivo_nuevo . '_' . $sigla;
 
         if (!file_exists('cdx/' . $codigo_bp)) {
@@ -95,8 +114,19 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         move_uploaded_file(
             $_FILES['archivos']['tmp_name'][$key],
             'cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key]);
-        rename('cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key],
-            'cdx/' . $ruta . '/' . $archivo_nuevo . '.' . $extension_archivo
+        rename(
+            'cdx/'
+            . $ruta
+            . '/'
+            . $_FILES['archivos']['name'][$key],
+
+            'cdx/'
+            . $ruta
+            . '/'
+            . $archivo_nuevo
+            . '.'
+            . $extension_archivo
+
         );
         conexion::cerrar_conexion();
         $error = '<img src=' . '"imgx/123.png"' . 'height=15px width=15px>';

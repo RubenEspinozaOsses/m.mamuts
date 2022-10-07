@@ -17,10 +17,8 @@ $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 $archivos = class_operar_archivos::listar_archivos_empresario(
-   $empresario->obtener_codigo_empresario(),
-   conexion::obtener_conexion());
-
-
+  $empresario->obtener_codigo_empresario(),
+  conexion::obtener_conexion());
 ?>
 
 <!doctype html>
@@ -84,15 +82,16 @@ $archivos = class_operar_archivos::listar_archivos_empresario(
               $descripcion = $a->obtener_descripcion();
               $ruta_base = '../../../../';
               $icono = '';
+              $img_icon = 'img/jpg.png';
               switch ($extension) {
                 case 'jpg':
-                  $icono = $ruta_base . 'img/jpg.png';
+                  $icono = $ruta_base . $img_icon;
                   break;
                 case 'png':
-                  $icono = $ruta_base . 'img/jpg.png';
+                  $icono = $ruta_base . $img_icon;
                   break;
                 case 'jpeg':
-                  $icono = $ruta_base . 'img/jpg.png';
+                  $icono = $ruta_base . $img_icon;
                   break;
                 case 'pdf':
                   $icono = $ruta_base . 'img/pdf.png';
@@ -144,9 +143,16 @@ $archivos = class_operar_archivos::listar_archivos_empresario(
 
 
   <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+  integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+  crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+  integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+  crossorigin="anonymous"></script>
+
   <script src="../../../../js/pages/user_interfaces/archivos/files.js"></script>
 </body>
 

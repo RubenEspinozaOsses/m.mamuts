@@ -30,7 +30,14 @@ if (!$login_valido) {
     $user_id = $usuario -> obtener_id();
 
 
-    control_sesion::iniciar_sesion($usuario->obtener_id(), $usuario->obtener_nombre(), $usuario->obtener_apellido_paterno(), $usuario->obtener_apellido_materno(), $usuario->obtener_rut(), $usuario->obtener_acceso(), tiempo_sesion);
+    control_sesion::iniciar_sesion(
+        $usuario->obtener_id(),
+        $usuario->obtener_nombre(),
+        $usuario->obtener_apellido_paterno(),
+        $usuario->obtener_apellido_materno(),
+        $usuario->obtener_rut(),
+        $usuario->obtener_acceso(),
+        tiempo_sesion);
 
     header('Refresh:1;url=../pages/user_interfaces/seleccionar_empresario.php');
 

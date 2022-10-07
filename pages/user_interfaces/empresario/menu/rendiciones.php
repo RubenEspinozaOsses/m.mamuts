@@ -21,10 +21,21 @@ $rut_empresario_real = base64_decode($rut_empresario);
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
-$rendiciones = class_operar_rendiciones::listar_rendiciones_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
-$presupuestos = class_operar_presupuestos::listar_presupuestos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
-$items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
-$proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
+$rendiciones = class_operar_rendiciones::listar_rendiciones_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+    
+$presupuestos = class_operar_presupuestos::listar_presupuestos_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+
+$items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp(
+    $codigo_bp,
+    conexion::obtener_conexion());
+
+$proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
+    $codigo_bp,
+    conexion::obtener_conexion());
 
 
 ?>
@@ -39,7 +50,12 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous">
+
     <link rel="stylesheet" href="../../../../css/rendiciones/style.css">
 </head>
 
@@ -48,7 +64,9 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
     <nav class="navbar">
         <div class="container-fluid">
 
-            <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
+            <a
+            href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>"
+            class="card navbar-left cancel-transparent">
                 <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
@@ -65,7 +83,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
 
 
     <?php
-    function subitem_diferentes($rendiciones)
+    function subitemDiferentes($rendiciones)
     {
         $recolectados = array();
         $i = 0;
@@ -78,7 +96,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
         return $recolectados;
     }
     $ren_map = array();
-    $recolecados = subitem_diferentes($rendiciones);
+    $recolecados = subitemDiferentes($rendiciones);
 
     ?>
 
@@ -219,9 +237,15 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
     </div>
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
