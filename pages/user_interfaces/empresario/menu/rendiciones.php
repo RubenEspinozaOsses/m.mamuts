@@ -62,79 +62,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
 
     <br>
 
-    <div class="card-footer row justify-content-center">
-        <button style="border-color: #170963;" class="btn btn-outline-primary w-25" type="button" data-bs-toggle="collapse" data-bs-target="#plan-trabajo" aria-expanded="false" aria-controls="plan-trabajo">
-            Plan Trabajo
-        </button>
-        <div class="container">
-            <div class="collapse" id="plan-trabajo">
-                <div class="card">
 
-                    <div class="card-body plan-trabajo">
-                        <div class="row">
-                            <div class="col">
-                                <h6>Instrumento</h6>
-                                <p>
-                                    <?php echo $proyecto->obtener_instrumento(); ?>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <h6>Plan negocio</h6>
-                                <p>
-                                    <?php echo $empresario->obtener_plan_negocio(); ?>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <h6>Sercotec</h6>
-                                <p>
-                                    <?php echo $empresario->obtener_cofinanciamiento(); ?>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <h6>Proyecto</h6>
-                                <p>
-                                    <?php echo $proyecto->obtener_proyecto(); ?>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <h6>Descripcion</h6>
-                                <p>
-                                    <?php echo $empresario->obtener_descripcion(); ?>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <h6>Aporte Empresarial</h6>
-                                <p>
-                                    <?php echo $empresario->obtener_aporte_empresarial(); ?>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <h6>Estado</h6>
-                                <p>
-                                    <?php echo $proyecto->obtener_estado(); ?>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <h6>Total</h6>
-                                <p>
-                                    <?php
-                                    $total = $empresario->obtener_aporte_empresarial() + $empresario->obtener_cofinanciamiento();
-                                    echo $total;
-                                    ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <?php
     function subitem_diferentes($rendiciones)
@@ -164,6 +92,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
                             $montos_finales = array();
                             $saldos_finales = array();
                             $nombres_si = array();
+                            $descripciones = array();
                             $i = 0;
                             foreach ($recolecados as $cod_si) {
                                 $monto = 0;
@@ -172,22 +101,29 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
                                 $saldo = 0;
                                 foreach ($rendiciones as $rendicion) {
                                     if ($rendicion->obtener_codigo_subitem() == $cod_si) {
-                                        $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem($codigo_bp, $cod_si, conexion::obtener_conexion())->obtener_subitem();
+                                        $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem(
+                                            $codigo_bp,
+                                            $cod_si,
+                                            conexion::obtener_conexion()
+                                        )->obtener_subitem();
                                         $cofinanciamiento += $rendicion->obtener_cofinanciamiento();
                                         $aporte_empresarial += $rendicion->obtener_aporte_empresarial();
+                                        $descripciones[$i] = $rendicion->obtener_descripcion();
                                     }
                                 }
                                 foreach ($presupuestos as $presupuesto) {
                                     if ($presupuesto->obtener_codigo_subitem() == $cod_si) {
                                         $monto += $presupuesto->obtener_total_fin();
-                                        $saldos_finales[$i] = $presupuesto->obtener_total_fin() - $cofinanciamiento - $aporte_empresarial;
+                                        $saldos_finales[$i] = $presupuesto->obtener_total_fin()
+                                            - $cofinanciamiento
+                                            - $aporte_empresarial;
                                     }
                                 }
                                 $montos_finales[$i] = $monto;
 
                             ?>
                                 <div class="row card w-75 zero-margin card-container">
-                                    <div class="col card w-75 card-75 zero-margin">
+                                    <div class="col">
                                         <h6 class="card-title text-center">
                                             <?php echo $nombres_si[$i]; ?>
                                         </h6>
@@ -225,11 +161,38 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp($codigo_bp, conex
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col card w-25 on-same-line card-25 zero-margin text-center no-border border-transparent">
+                                    <div class="card-footer row override-col">
 
-                                        <a href='detalles_rendiciones/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario_real) ?>&codigo_bp=<?php echo base64_encode($codigo_bp) ?>&cod_si=<?php echo base64_encode($cod_si) ?>&&nom_si=<?php echo base64_encode($nombres_si[$i]) ?>'>
-                                            <img src='../../../../img/buscar.png' alt="detalles" />
+                                        <a
+                                        class="card-link col override-col text-center"
+                                        href='detalles_rendiciones/detalles.php?
+                                        rut_empresario=<?php echo base64_encode($rut_empresario_real) ?>&
+                                        codigo_bp=<?php echo base64_encode($codigo_bp) ?>&
+                                        cod_si=<?php echo base64_encode($cod_si) ?>&
+                                        nom_si=<?php echo base64_encode($nombres_si[$i]) ?>'>
+                                            Facturas
                                         </a>
+
+                                        <a
+                                        href=""
+                                        class="card-link col override-col text-center"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#plan-inversion-<?php echo $i ?>"
+                                        aria-expanded="false"
+                                        aria-controls="plan-inversion-<?php echo $i ?>">
+                                            Plan Inversion
+                                        </a>
+                                        <div class="container collapse" id="plan-inversion-<?php echo $i ?>">
+                                            <div class="card">
+                                                <div class="card-body override-card-body">
+                                                    <div class="text-center fit-word">
+                                                        <?php echo $descripciones[$i] ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
 
                                     </div>
 
