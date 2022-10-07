@@ -20,12 +20,25 @@ $rut_empresario_real = base64_decode($_GET['rut_empresario']);
 $codigo_bp = base64_decode($_GET['codigo_bp']);
 $cod_si = base64_decode($_GET['cod_si']);
 
-$empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
+$empresario = class_operar_empresarios::buscar_empresarios_rut(
+    $rut_empresario_real,
+    conexion::obtener_conexion());
 
-$rendiciones = class_operar_rendiciones::listar_rendiciones_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
-$presupuestos = class_operar_presupuestos::listar_presupuestos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
-$items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
-$archivos = class_operar_archivos::listar_archivos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+$rendiciones = class_operar_rendiciones::listar_rendiciones_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+    
+$presupuestos = class_operar_presupuestos::listar_presupuestos_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+
+$items = class_operar_item_proyectos::listar_item_proyectos_codigo_bp(
+    $codigo_bp,
+    conexion::obtener_conexion());
+
+$archivos = class_operar_archivos::listar_archivos_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
 
 $rendiciones_especificas = array();
 
@@ -49,8 +62,15 @@ foreach ($rendiciones as $rendicion) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles Rendiciones</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../../../css/detalles_rendiciones/style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous">
+
+    <link
+    rel="stylesheet"
+    href="../../../../../css/detalles_rendiciones/style.css">
 
 </head>
 
@@ -59,7 +79,9 @@ foreach ($rendiciones as $rendicion) {
     <nav class="navbar">
         <div class="container-fluid">
 
-            <a href="../rendiciones.php?rut_empresario=<?php echo $_GET['rut_empresario']; ?>" class="card navbar-left cancel-transparent">
+            <a
+            href="../rendiciones.php?rut_empresario=<?php echo $_GET['rut_empresario']; ?>"
+            class="card navbar-left cancel-transparent">
                 <img src="../../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
@@ -102,13 +124,18 @@ foreach ($rendiciones as $rendicion) {
                                         <div class="card-title text-center">
                                             <h4>
                                                 <?php
-                                                $sa = ($rendicion->obtener_aporte_empresarial() + $rendicion->obtener_cofinanciamiento());
+                                                $sa = ($rendicion->obtener_aporte_empresarial()
+                                                + $rendicion->obtener_cofinanciamiento());
                                                 echo $sa;
                                                 ?>
                                             </h4>
                                         </div>
                                         <p class="desglose-sa text-center" id="detsercapor">
-                                            ( <?php echo $rendicion->obtener_cofinanciamiento() ?> + <?php echo $rendicion->obtener_aporte_empresarial() ?> )
+                                            ( <?php
+                                                echo $rendicion->obtener_cofinanciamiento()
+                                            ?> + <?php
+                                                echo $rendicion->obtener_aporte_empresarial()
+                                            ?> )
                                         </p>
 
                                     </div>
@@ -169,9 +196,15 @@ foreach ($rendiciones as $rendicion) {
         </div>
     </div>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
 
 </body>
 
