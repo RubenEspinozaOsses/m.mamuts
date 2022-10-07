@@ -17,7 +17,10 @@ $rut_empresario = $_GET['rut_empresario'];
 $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
-$pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+$pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion());
+    
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
 $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
 
@@ -39,7 +42,7 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
     crossorigin="anonymous">
-    
+
     <link
     rel="stylesheet"
     href="../../../../css/presupuesto/style.css">

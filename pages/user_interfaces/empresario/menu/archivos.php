@@ -16,7 +16,9 @@ $rut_empresario = $_GET['rut_empresario'];
 $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
-$archivos = class_operar_archivos::listar_archivos_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+$archivos = class_operar_archivos::listar_archivos_empresario(
+   $empresario->obtener_codigo_empresario(),
+   conexion::obtener_conexion());
 
 
 ?>
@@ -31,7 +33,11 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS v5.2.0-beta1 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="anonymous">
   <link rel="stylesheet" href="../../../../css/archivos/style.css">
 </head>
 
@@ -40,7 +46,9 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
   <nav class="navbar">
     <div class="container-fluid">
 
-      <a href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>" class="card navbar-left cancel-transparent">
+      <a
+      href="../menu.php?rut_empresario=<?php echo $_GET['rut_empresario'] ?>"
+      class="card navbar-left cancel-transparent">
         <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
       </a>
@@ -59,7 +67,7 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
 
   <div class="container">
     <div class="row justify-content-center">
-      <div class="card w-100">
+      <div class="card w-75">
         <div id="file-container" class="card-body">
           <?php
           $id = 0;
@@ -90,28 +98,33 @@ $archivos = class_operar_archivos::listar_archivos_empresario($empresario->obten
                   $icono = $ruta_base . 'img/pdf.png';
                   break;
                 case 'docx':
-                  $icono = $ruta_base . 'img/docx.png';
+                  $icono = $ruta_base . 'img/texto.png';
                   break;
                 case 'doc':
-                  $icono = $ruta_base . 'img/docx.png';
+                  $icono = $ruta_base . 'img/texto.png';
                   break;
                 default:
                   $icono = $ruta_base . 'img/mamuts1.png';
                   break;
               }
               ?>
-              <div class="col d-flex justify-content-center">
+              <div class="col justify-content-center text-center">
                 <img src="<?php echo $icono ?>" class="file-icon" alt="Icono" />
               </div>
-              <div class="col d-flex justify-content-center file-name">
-                <?php
-                echo $nombre . "." . $extension;
-                ?>
+              <div class="col justify-content-center w-10 file-name">
+              <a
+                href="../<?php echo $ruta_base
+                . "cdx/"
+                . $ruta
+                . "/"
+                . $nombre
+                . "."
+                . $extension  ?>"
+                >
+                <?php echo $nombre . "." . $extension  ?>
+              </a>
               </div>
-              <div class="col d-flex justify-content-center align-middle">
-
-                <a href="../<?php echo $ruta_base . "cdx/" . $ruta . "/" . $nombre . "." . $extension ?>"><img src="../../../../img/down.png" alt="Descargar"></a>
-              </div>
+              
               <hr>
             </div>
 

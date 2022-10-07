@@ -101,6 +101,7 @@ hr {
 }
 
 .fit-word {
+    white-space: normal !important;
     word-break: break-all;
     font-size: smaller;
 }

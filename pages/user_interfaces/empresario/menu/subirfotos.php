@@ -52,9 +52,18 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
         </h1>
 
         <div class="row justify-content-center">
-            <form action="../../../../middlewares/subirfoto.php?rut_empresario=<?php echo $rut_empresario ?>" method="POST" id="form-archivos" enctype="multipart/form-data">
+            <form
+            action="../../../../middlewares/subirfoto.php?rut_empresario=<?php echo $rut_empresario ?>"
+            method="POST"
+            id="form-archivos"
+            enctype="multipart/form-data">
                 <div class="input-group mb-3 col">
-                    <select class="form-select" aria-label="Default select example" id="eta-ejecucion" name="eta-ejecucion" aria-placeholder="">
+                    <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    id="eta-ejecucion"
+                    name="eta-ejecucion"
+                    aria-placeholder="">
 
                         <option value="0" selected disabled>Seleccione tipo de ejecucion</option>
                         <option value="1">[1] Evaluacion</option>
@@ -72,7 +81,13 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                         <img src="../../../../img/mamuts1.png" alt="">
                     </label>
                     <div class="image-upload">
-                        <input type="file" id="archivos" name="archivos[]" accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif" multiple onchange="submit_automatically();" />
+                        <input
+                        type="file"
+                        id="archivos"
+                        name="archivos[]"
+                        accept=".png, .jpeg, .jpg, .gif, .bmp, .jfif"
+                        multiple
+                        onchange="submit_automatically();" />
                     </div>
 
 
