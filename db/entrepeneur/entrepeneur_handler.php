@@ -885,7 +885,39 @@ class class_operar_empresarios {
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         $empresarios[] = new class_tabla_empresarios(
-                                $fila['id'], $fila['codigo_empresario'], $fila['plan_negocio'], $fila['descripcion'], $fila['cofinanciamiento'], $fila['aporte_empresarial'], $fila['total'], $fila['rut'], $fila['nombre'], $fila['apellido_paterno'], $fila['apellido_materno'], $fila['direccion_particular'], $fila['comuna_direccion_particular'], $fila['direccion'], $fila['comuna'], $fila['provincia'], $fila['telefono'], $fila['celular'], $fila['email'], $fila['rut_razon_social'], $fila['razon_social'], $fila['rut_representante'], $fila['representante'], $fila['persona_juridica'], $fila['tipo_juridica'], $fila['rut_evaluador'], $fila['rut_asesor'], $fila['rut_ejecutivo'], $fila['estado'], $fila['utm_north'], $fila['utm_east'], $fila['utm_zone'], $fila['utm_hemisferio']
+                                $fila['id'],
+                                $fila['codigo_empresario'],
+                                $fila['plan_negocio'],
+                                $fila['descripcion'],
+                                $fila['cofinanciamiento'],
+                                $fila['aporte_empresarial'],
+                                $fila['total'],
+                                $fila['rut'],
+                                $fila['nombre'],
+                                $fila['apellido_paterno'],
+                                $fila['apellido_materno'],
+                                $fila['direccion_particular'],
+                                $fila['comuna_direccion_particular'],
+                                $fila['direccion'],
+                                $fila['comuna'],
+                                $fila['provincia'],
+                                $fila['telefono'],
+                                $fila['celular'],
+                                $fila['email'],
+                                $fila['rut_razon_social'],
+                                $fila['razon_social'],
+                                $fila['rut_representante'],
+                                $fila['representante'],
+                                $fila['persona_juridica'],
+                                $fila['tipo_juridica'],
+                                $fila['rut_evaluador'],
+                                $fila['rut_asesor'],
+                                $fila['rut_ejecutivo'],
+                                $fila['estado'],
+                                $fila['utm_north'],
+                                $fila['utm_east'],
+                                $fila['utm_zone'],
+                                $fila['utm_hemisferio']
                         );
                     }
                 }

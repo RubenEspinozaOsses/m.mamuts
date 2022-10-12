@@ -13,13 +13,13 @@ class control_sesion {
             session_start();
         }
 
-        $_SESSION['id_usuario'] = $id_usuario;
-        $_SESSION['nombre_usuario'] = $nombre_usuario;
-        $_SESSION['apellido_paterno_usuario'] = $apellido_paterno_usuario;
-        $_SESSION['apellido_materno_usuario'] = $apellido_materno_usuario;
-        $_SESSION['rut_usuario'] = $rut_usuario;
-        $_SESSION['acceso_usuario'] = $acceso_usuario;
-        $_SESSION['tiempo'] = time();
+        $_SESSION['id_usuario_m'] = $id_usuario;
+        $_SESSION['nombre_usuario_m'] = $nombre_usuario;
+        $_SESSION['apellido_paterno_usuario_m'] = $apellido_paterno_usuario;
+        $_SESSION['apellido_materno_usuario_m'] = $apellido_materno_usuario;
+        $_SESSION['rut_usuario_m'] = $rut_usuario;
+        $_SESSION['acceso_usuario_m'] = $acceso_usuario;
+        $_SESSION['tiempo_m'] = time();
 
         setcookie(session_name(), session_id(), time() + $tiempo_sesion);
 
@@ -31,26 +31,26 @@ class control_sesion {
             session_start();
         }
 
-        if (isset($_SESSION['id_usuario'])) {
-            unset($_SESSION['id_usuario']);
+        if (isset($_SESSION['id_usuario_m'])) {
+            unset($_SESSION['id_usuario_m']);
         }
 
-        if (isset($_SESSION['nombre_usuario'])) {
-            unset($_SESSION['nombre_usuario']);
+        if (isset($_SESSION['nombre_usuario_m'])) {
+            unset($_SESSION['nombre_usuario_m']);
         }
 
-        if (isset($_SESSION['apellido_paterno_usuario'])) {
-            unset($_SESSION['apellido_paterno_usuario']);
+        if (isset($_SESSION['apellido_paterno_usuario_m'])) {
+            unset($_SESSION['apellido_paterno_usuario_m']);
         }
 
-        if (isset($_SESSION['apellido_materno_usuario'])) {
-            unset($_SESSION['apellido_materno_usuario']);
+        if (isset($_SESSION['apellido_materno_usuario_m'])) {
+            unset($_SESSION['apellido_materno_usuario_m']);
         }
-        if (isset($_SESSION['rut_usuario'])) {
-            unset($_SESSION['rut_usuario']);
+        if (isset($_SESSION['rut_usuario_m'])) {
+            unset($_SESSION['rut_usuario_m']);
         }
-        if (isset($_SESSION['acceso_usuario'])) {
-            unset($_SESSION['acceso_usuario']);
+        if (isset($_SESSION['acceso_usuario_m'])) {
+            unset($_SESSION['acceso_usuario_m']);
         }
         session_destroy();
     }
@@ -59,7 +59,7 @@ class control_sesion {
         if (session_id() == '') {
             session_start();
         }
-        if (isset($_SESSION['id_usuario']) && isset($_SESSION['nombre_usuario']) && isset($_SESSION['apellido_paterno_usuario']) && isset($_SESSION['apellido_materno_usuario']) && isset($_SESSION['rut_usuario']) && isset($_SESSION['acceso_usuario'])) {
+        if (isset($_SESSION['id_usuario_m']) && isset($_SESSION['nombre_usuario_m']) && isset($_SESSION['apellido_paterno_usuario_m']) && isset($_SESSION['apellido_materno_usuario_m']) && isset($_SESSION['rut_usuario_m']) && isset($_SESSION['acceso_usuario_m'])) {
             return true;
         } else {
             return false;

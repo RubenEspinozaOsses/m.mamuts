@@ -54,8 +54,6 @@ hr.white-divider {
 
 .card-right {
     border-color: transparent !important;
-    border-left-color: var(--main-color)!important;
-    border-bottom-color: var(--main-color)!important;
 }
 
 

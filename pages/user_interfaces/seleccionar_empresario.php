@@ -2,15 +2,37 @@
 include '../../sys/control_sesion.php';
 include '../../sys/db_config.php';
 session_start();
-if (!isset($_SESSION['id_usuario'])) {
+echo $_SESSION['id_usuario_m'] . " -> es la id guardada en la sesion" . "<br>";
+if (!isset($_SESSION['id_usuario_m'])) {
 
   conexion::cerrar_conexion();
   control_sesion::cerrar_sesion();
 
   echo "Inicie sesion nuevamente";
   header("refresh:4;url=../login.php");
-} elseif ($_SESSION['acceso_usuario'] == 2) { ?>
+}
+include '../../db/entrepeneur/entrepeneur_handler.php';
+conexion::abrir_conexion();
 
+$rut_asesor = $_SESSION['rut_usuario_m'];
+$empresarios = null;
+$mostrar = false;
+if ($_SESSION['acceso_usuario_m'] == 1) {
+
+  $empresarios = class_operar_empresarios::listar_empresarios(
+    conexion::obtener_conexion()
+  );
+  $mostrar = true;
+} elseif ($_SESSION['acceso_usuario_m'] == 2) {
+  $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
+    $rut_asesor,
+    conexion::obtener_conexion()
+  );
+  $mostrar = true;
+}
+
+if ($mostrar) {
+?>
   <!doctype html>
   <html lang="en">
 
@@ -21,11 +43,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../css/seleccionar_empresario/style.css">
   </head>
@@ -34,19 +52,10 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <?php
 
-    include '../../db/entrepeneur/entrepeneur_handler.php';
 
-    conexion::abrir_conexion();
-
-    $rut_asesor = $_SESSION['rut_usuario'];
-
-
-    $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
-      $rut_asesor,
-      conexion::obtener_conexion()
-    );
 
     $cantidad_empresarios = count($empresarios);
+    echo "<script type='text/javascript'>console.log('$rut_asesor');console.log('$cantidad_empresarios');</script>";
 
 
     conexion::cerrar_conexion();
@@ -54,18 +63,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <nav class="navbar">
       <div class="container-fluid">
-        <a
-        class="navbar-brand ml-auto"
-        href="#"
-        data-bs-toggle="collapse"
-        data-bs-target="#search"
-        aria-expanded="false"
-        aria-controls="search">
+        <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
           <img src="../../img/buscar.png" alt="" width="30" height="30">
         </a>
 
 
-        
+
       </div>
 
 
@@ -110,8 +113,8 @@ if (!isset($_SESSION['id_usuario'])) {
                     <div class="card-body">
                       <div class="col-3">
                         <h5 class="card-title col"><?php echo $apellido_paterno . " "
-                        . $apellido_materno . ", "
-                        . $nombre ?>
+                                                      . $apellido_materno . ", "
+                                                      . $nombre ?>
                         </h5>
                       </div>
                       <div class="col-3">
@@ -122,13 +125,9 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
                       <div class="card-footer text-center row" style="background-color: white;">
-                        <a
-                        href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>"
-                        class="card-link col">Detalles</a>
+                        <a href="./empresario/detalles.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Detalles</a>
 
-                        <a
-                        href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>"
-                        class="card-link col">Menu</a>
+                        <a href="./empresario/menu.php?rut_empresario=<?php echo base64_encode($rut_empresario) ?>" class="card-link col">Menu</a>
                       </div>
 
                     </div>
@@ -153,23 +152,16 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-    crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
     <script src="../../js/pages/user_interfaces/seleccionar_empresario.js">
 
     </script>
   </body>
 
   </html>
-
 <?php
+
 }
-?>
