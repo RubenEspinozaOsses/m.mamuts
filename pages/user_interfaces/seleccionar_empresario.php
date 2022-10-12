@@ -2,7 +2,7 @@
 include '../../sys/control_sesion.php';
 include '../../sys/db_config.php';
 session_start();
-echo $_SESSION['id_usuario_m'] . " -> es la id guardada en la sesion" . "<br>";
+//echo $_SESSION['id_usuario_m'] . " -> es la id guardada en la sesion" . "<br>";
 if (!isset($_SESSION['id_usuario_m'])) {
 
   conexion::cerrar_conexion();
@@ -55,7 +55,7 @@ if ($mostrar) {
 
 
     $cantidad_empresarios = count($empresarios);
-    echo "<script type='text/javascript'>console.log('$rut_asesor');console.log('$cantidad_empresarios');</script>";
+    //echo "<script type='text/javascript'>console.log('$rut_asesor');console.log('$cantidad_empresarios');</script>";
 
 
     conexion::cerrar_conexion();
