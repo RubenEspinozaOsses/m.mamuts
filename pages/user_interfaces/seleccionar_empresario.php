@@ -12,16 +12,34 @@ if (!isset($_SESSION['id_usuario_m'])) {
   header("refresh:4;url=../login.php");
 }
 include '../../db/entrepeneur/entrepeneur_handler.php';
+
 conexion::abrir_conexion();
 
 $rut_asesor = $_SESSION['rut_usuario_m'];
 $empresarios = null;
 $mostrar = false;
 if ($_SESSION['acceso_usuario_m'] == 1) {
-
-  $empresarios = class_operar_empresarios::listar_empresarios(
+  include '../../db/projects/project_handler.php';
+  $empresarios_obtenidos = class_operar_empresarios::listar_empresarios(
     conexion::obtener_conexion()
   );
+
+  $empresarios = array();
+
+  $proyectos = class_operar_proyectos::listar_proyectos_activos(conexion::obtener_conexion());
+  $i = 0;
+  foreach ($proyectos as $p) {
+    foreach ($empresarios_obtenidos as $e){
+      $codigo_bp = explode('-', $e->obtener_codigo_empresario())[0];
+      
+      if ($p -> obtener_codigo_bp() == $codigo_bp) {
+        //echo $codigo_bp . "<br>";
+        $empresarios[$i] = $e;
+        $i++;
+        break;
+      }
+    }
+  }
   $mostrar = true;
 } elseif ($_SESSION['acceso_usuario_m'] == 2) {
   $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
