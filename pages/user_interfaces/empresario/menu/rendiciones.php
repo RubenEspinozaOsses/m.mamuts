@@ -142,7 +142,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                             ?>
                                 <div class="row card w-75 zero-margin card-container">
                                     <div class="col">
-                                        <h6 class="card-title text-center">
+                                        <h6 class="card-title text-center fit-word">
                                             <?php echo $nombres_si[$i]; ?>
                                         </h6>
                                         <hr class="divider">

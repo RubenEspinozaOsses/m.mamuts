@@ -58,3 +58,9 @@ body {
     margin: auto;
     padding-top: 25%;
 }
+
+.fit-word {
+    white-space: normal !important;
+    word-break: break-all;
+    font-size: small;
+}

@@ -45,7 +45,7 @@ if ($mostrar) {
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../../css/seleccionar_empresario/style.css">
+    <link rel="stylesheet" href="../../css/seleccionar_empresario/style1.css">
   </head>
 
   <body>
@@ -111,8 +111,8 @@ if ($mostrar) {
                 <div class="card col-md-6 card-container w-100">
                   <div class="card">
                     <div class="card-body">
-                      <div class="col-3">
-                        <h5 class="card-title col"><?php echo $apellido_paterno . " "
+                      <div class="col">
+                        <h5 class="card-title fit-word"><?php echo $apellido_paterno . " "
                                                       . $apellido_materno . ", "
                                                       . $nombre ?>
                         </h5>
