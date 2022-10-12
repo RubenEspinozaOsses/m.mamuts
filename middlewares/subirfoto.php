@@ -89,12 +89,13 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
         $asignacion = '-----';
         $sigla = tipoDoc($descripcion);
         $archivo_nuevo = $archivo_nuevo . '_' . $sigla;
+        $path_to_og_cdx = "../../";
 
-        if (!file_exists('cdx/' . $codigo_bp)) {
-            mkdir('cdx/' . $codigo_bp, 0777);
+        if (!file_exists($path_to_og_cdx . 'cdx/' . $codigo_bp)) {
+            mkdir($path_to_og_cdx . 'cdx/' . $codigo_bp, 0777);
         }
-        if (!file_exists('cdx/' . $codigo_bp . '/' . $empresarios->obtener_rut_razon_social())) {
-            mkdir('cdx/' . $codigo_bp . '/' . $empresarios->obtener_rut_razon_social(), 0777);
+        if (!file_exists($path_to_og_cdx . 'cdx/' . $codigo_bp . '/' . $empresarios->obtener_rut_razon_social())) {
+            mkdir($path_to_og_cdx . 'cdx/' . $codigo_bp . '/' . $empresarios->obtener_rut_razon_social(), 0777);
         }
 
         conexion::abrir_conexion();
@@ -113,14 +114,14 @@ foreach ($_FILES["archivos"]['tmp_name'] as $key => $tmp_name) {
             conexion::obtener_conexion());
         move_uploaded_file(
             $_FILES['archivos']['tmp_name'][$key],
-            'cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key]);
+            $path_to_og_cdx . 'cdx/' . $ruta . '/' . $_FILES['archivos']['name'][$key]);
         rename(
             'cdx/'
             . $ruta
             . '/'
             . $_FILES['archivos']['name'][$key],
 
-            'cdx/'
+            $path_to_og_cdx . 'cdx/'
             . $ruta
             . '/'
             . $archivo_nuevo

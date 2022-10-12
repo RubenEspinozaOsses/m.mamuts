@@ -2,7 +2,13 @@
 
 class control_sesion {
 
-    public static function iniciar_sesion($id_usuario, $nombre_usuario, $apellido_paterno_usuario, $apellido_materno_usuario, $rut_usuario, $acceso_usuario, $tiempo_sesion) {
+    public static function iniciar_sesion(
+        $id_usuario,
+        $nombre_usuario,
+        $apellido_paterno_usuario,
+        $apellido_materno_usuario,
+        $rut_usuario, $acceso_usuario,
+        $tiempo_sesion) {
         if (session_id() == '') {
             session_start();
         }
