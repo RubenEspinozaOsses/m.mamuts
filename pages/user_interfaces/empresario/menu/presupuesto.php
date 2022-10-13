@@ -24,6 +24,9 @@ $pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario(
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
 $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
 
+foreach ($pre_empresarios as $p){
+    echo $p -> obtener_codigo_item() . " " . $p -> obtener_codigo_subitem() . "<br>";
+}
 
 ?>
 
