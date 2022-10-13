@@ -23,9 +23,22 @@ $pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario(
     
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
 $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
-
-foreach ($pre_empresarios as $p){
-    echo $p -> obtener_codigo_item() . " " . $p -> obtener_codigo_subitem() . "<br>";
+$nombres_si = array();
+$index_nombre = 0;
+foreach ($pre_empresarios as $p) {
+    $cod_item = $p -> obtener_codigo_item();
+    $cod_sitem = $p -> obtener_codigo_subitem();
+    $tiene_valor = $p->obtener_cofinanciamiento_fin() > 0
+    || $p->obtener_aporte_empresarial_fin() > 0
+    || $p->obtener_total_fin() > 0;
+    foreach ($subitems_e as $si) {
+        if ($cod_item == $si -> obtener_codigo_item()
+        && $cod_sitem == $si -> obtener_codigo_subitem()
+        && $tiene_valor) {
+            $nombres_si[$index_nombre] = $si -> obtener_subitem();
+            $index_nombre++;
+        }
+    }
 }
 
 ?>
@@ -86,7 +99,7 @@ foreach ($pre_empresarios as $p){
 
                 <h5 class="title text-center">
                     <?php
-                    echo $subitems_e[$i]->obtener_subitem();
+                    echo $nombres_si[$i];
 
                     ?>
                 </h5>
@@ -156,8 +169,9 @@ foreach ($pre_empresarios as $p){
 
 
         <?php
-            }
             $i++;
+            }
+            
         }
 
         ?>
