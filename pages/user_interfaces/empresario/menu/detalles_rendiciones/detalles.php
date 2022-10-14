@@ -181,7 +181,15 @@ foreach ($rendiciones as $rendicion) {
                             </div>
                         </div>
                         <div class="card-footer text-center align-middle">
-                            <h6>Pagado [<?php echo $rendicion->obtener_fecha_pago(); ?>]</h6>
+                            <?php
+                                if ($rendicion -> obtener_fecha_pago() == '0001-01-01') {
+                                    echo "<h6>Pendiente</h6>";
+                                } else {
+                                    $fecha = $rendicion->obtener_fecha_pago();
+                                    echo "<h6>Pagado [$fecha]</h6>";
+                                }
+                            ?>
+                            
                         </div>
                     </div>
                     <hr class="white-divider">

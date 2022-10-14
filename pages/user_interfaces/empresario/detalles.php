@@ -8,7 +8,12 @@ include '../../../sys/db_config.php';
 
 conexion::abrir_conexion();
 
-$empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_GET['rut_empresario']), conexion::obtener_conexion());
+$empresario = class_operar_empresarios::buscar_empresarios_rut(
+  base64_decode(
+    $_GET['rut_empresario']
+  ),
+  conexion::obtener_conexion()
+);
 
 
 ?>
@@ -32,9 +37,9 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
   <nav class="navbar">
     <div class="container-fluid">
-      
+
       <a href="../seleccionar_empresario.php" class="card navbar-left">
-        <img src="../../../img/back.png" alt="" width="30" height="30" background-color="black" >
+        <img src="../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
       </a>
     </div>
@@ -146,20 +151,33 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
 
                       $estado = $proyecto->obtener_estado();
-                      $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+                      $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario(
+                        $empresario->obtener_codigo_empresario(),
+                        conexion::obtener_conexion()
+                      );
+
                       $fecha_hoy = date('Y-m-d');
 
-                      $fecha_termino = $formalizacion[0]->obtener_fecha_termino();
+                      if (!empty($formalizacion)) {
+                        $fecha_termino = $formalizacion[0]->obtener_fecha_termino();
 
-                      $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+                        $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario(
+                          $empresario->obtener_codigo_empresario(),
+                          conexion::obtener_conexion()
+                        );
 
-                      $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
+                        $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
 
-                      $msg_dias_extra = $dias_extra > 0 ? "($dias_extra dias extra)" : "";
+                        $msg_dias_extra = $dias_extra > 0 ? "($dias_extra dias extra)" : "";
 
-                      $msg_dias_restantess = $dias_restantes <= 0 ? "No quedan dias restantes" : "$estado, quedan $dias_restantes dias";
+                        $msg_dias_restantess = $dias_restantes <= 0 ?
+                        "No quedan dias restantes" :
+                        "$estado, quedan $dias_restantes dias";
 
-                      echo $estado == "Activo" ? $msg_dias_restantess . $msg_dias_extra : "$estado";
+                        echo $estado == "Activo" ? $msg_dias_restantess . $msg_dias_extra : "$estado";
+                      } else {
+                        echo "<center><span>No hay formalizacion para este empresario</span></center>";
+                      }
 
                       ?>
                     </div>

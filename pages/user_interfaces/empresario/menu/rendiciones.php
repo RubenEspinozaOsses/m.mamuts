@@ -95,8 +95,9 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
         }
         return $recolectados;
     }
-    $ren_map = array();
-    $recolecados = subitemDiferentes($rendiciones);
+    if (count($rendiciones) > 0) {
+        $ren_map = array();
+    $recolectados = subitemDiferentes($rendiciones);
 
     ?>
 
@@ -112,7 +113,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                             $nombres_si = array();
                             $descripciones = array();
                             $i = 0;
-                            foreach ($recolecados as $cod_si) {
+                            foreach ($recolectados as $cod_si) {
                                 $monto = 0;
                                 $cofinanciamiento = 0;
                                 $aporte_empresarial = 0;
@@ -235,7 +236,11 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
 
         </div>
     </div>
-
+    <?php
+    } else {
+        echo "<center><span>No hay rendiciones para este empresario</span></center>";
+    }
+    ?>
     <!-- Bootstrap JavaScript Libraries -->
     <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
