@@ -19,23 +19,26 @@ $rut_empresario_real = base64_decode($rut_empresario);
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 $pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario(
     $empresario->obtener_codigo_empresario(),
-    conexion::obtener_conexion());
-    
+    conexion::obtener_conexion()
+);
+
 $codigo_bp = explode('-', $empresario->obtener_codigo_empresario())[0];
 $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codigo_bp, conexion::obtener_conexion());
 $nombres_si = array();
 $index_nombre = 0;
 foreach ($pre_empresarios as $p) {
-    $cod_item = $p -> obtener_codigo_item();
-    $cod_sitem = $p -> obtener_codigo_subitem();
+    $cod_item = $p->obtener_codigo_item();
+    $cod_sitem = $p->obtener_codigo_subitem();
     $tiene_valor = $p->obtener_cofinanciamiento_fin() > 0
-    || $p->obtener_aporte_empresarial_fin() > 0
-    || $p->obtener_total_fin() > 0;
+        || $p->obtener_aporte_empresarial_fin() > 0
+        || $p->obtener_total_fin() > 0;
     foreach ($subitems_e as $si) {
-        if ($cod_item == $si -> obtener_codigo_item()
-        && $cod_sitem == $si -> obtener_codigo_subitem()
-        && $tiene_valor) {
-            $nombres_si[$index_nombre] = $si -> obtener_subitem();
+        if (
+            $cod_item == $si->obtener_codigo_item()
+            && $cod_sitem == $si->obtener_codigo_subitem()
+            && $tiene_valor
+        ) {
+            $nombres_si[$index_nombre] = $si->obtener_subitem();
             $index_nombre++;
         }
     }
@@ -53,15 +56,9 @@ foreach ($pre_empresarios as $p) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <link
-    rel="stylesheet"
-    href="../../../../css/presupuesto/style.css">
+    <link rel="stylesheet" href="../../../../css/presupuesto/style.css">
 </head>
 
 <body style="color: #170963;">
@@ -79,10 +76,7 @@ foreach ($pre_empresarios as $p) {
                             . " " . $_SESSION['apellido_paterno_usuario_m']
                             . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
                 <span>
-                    <button class="btn"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#opciones_usuario"
-                    aria-expanded="false" aria-controls="opciones_usuario">
+                    <button class="btn" data-bs-toggle="collapse" data-bs-target="#opciones_usuario" aria-expanded="false" aria-controls="opciones_usuario">
                         <img src="../../../../img/user.png" alt="User" width="30px" height="30px">
                     </button>
 
@@ -112,9 +106,11 @@ foreach ($pre_empresarios as $p) {
 
         $i = 0;
         foreach ($pre_empresarios as $presupuesto) {
-            if ($presupuesto->obtener_cofinanciamiento_fin() > 0
-            || $presupuesto->obtener_aporte_empresarial_fin() > 0
-            || $presupuesto->obtener_total_fin() > 0) {
+            if (
+                $presupuesto->obtener_cofinanciamiento_fin() > 0
+                || $presupuesto->obtener_aporte_empresarial_fin() > 0
+                || $presupuesto->obtener_total_fin() > 0
+            ) {
 
 
         ?>
@@ -125,158 +121,175 @@ foreach ($pre_empresarios as $p) {
 
                     ?>
                 </h5>
-                <div class="card card-presupuesto">
-                    <div class="row">
-                        <div class="col no-right">
-                            <div class="card card-left">
-                                <div class="card-title text-center align-middle">
+                <div class="container">
+                    <div class="card card-presupuesto w-100">
+                        <div class="row">
+                            <div class="col no-right">
+                                <div class="card card-left">
+                                    <div class="card-title text-center align-middle">
 
-                                    <h6>Sercotec</h6>
+                                        <h6>Sercotec</h6>
 
+                                    </div>
+                                    <hr class="mc-divider">
+                                    <div class="card-body">
+                                        <h3 class="text-center align-middle">
+                                            <?php
+                                            $sercotec_total += $presupuesto->obtener_cofinanciamiento_fin();
+                                            echo number_format(
+                                                $presupuesto->obtener_cofinanciamiento_fin(),
+                                                '0',
+                                                ',',
+                                                '.'
+                                            );
+                                            
+                                            ?>
+                                        </h3>
+                                    </div>
                                 </div>
-                                <hr class="mc-divider">
-                                <div class="card-body">
-                                    <h3 class="text-center align-middle">
-                                        <?php
-                                        $sercotec_total += $presupuesto->obtener_cofinanciamiento_fin();
-                                        echo $presupuesto->obtener_cofinanciamiento_fin();
-                                        ?>
-                                    </h3>
+                            </div>
+
+                            <div class="col no-left">
+                                <div class="card card-middle">
+                                    <div class="card-title text-center align-middle">
+
+                                        <h6>Aporte</h6>
+
+                                    </div>
+                                    <hr class="mc-divider">
+                                    <div class="card-body">
+                                        <h3 class="text-center">
+                                            <?php
+                                            $aporte_total += $presupuesto->obtener_aporte_empresarial_fin();
+                                            echo number_format(
+                                                $presupuesto->obtener_aporte_empresarial_fin(),
+                                                '0',
+                                                ',',
+                                                '.'
+                                            )
+                                            ?>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="card card-right">
+                                    <div class="card-title text-center align-middle">
+
+                                        <h6>Total</h6>
+
+                                    </div>
+                                    <hr class="mc-divider">
+                                    <div class="card-body">
+                                        <h3 class="text-center align-middle">
+                                            <?php
+                                            $total_resultante += $presupuesto->obtener_total_fin();
+                                            echo number_format($presupuesto->obtener_total_fin(), '0', ',', '.')
+                                            ?>
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col no-both">
-                            <div class="card card-middle">
-                                <div class="card-title text-center align-middle">
-
-                                    <h6>Aporte</h6>
-
-                                </div>
-                                <hr class="mc-divider">
-                                <div class="card-body">
-                                    <h3 class="text-center">
-                                        <?php
-                                        $aporte_total += $presupuesto->obtener_aporte_empresarial_fin();
-                                        echo $presupuesto->obtener_aporte_empresarial_fin();
-                                        ?>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col no-left">
-                            <div class="card card-right">
-                                <div class="card-title text-center align-middle">
-
-                                    <h6>Total</h6>
-
-                                </div>
-                                <hr class="mc-divider">
-                                <div class="card-body">
-                                    <h3 class="text-center align-middle">
-                                        <?php
-                                        $total_resultante += $presupuesto->obtener_total_fin();
-                                        echo $presupuesto->obtener_total_fin();
-                                        ?>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
 
                 <hr class="border-white">
 
 
         <?php
-            $i++;
+                $i++;
             }
-            
         }
 
         ?>
         <hr class="border-white">
 
-        <h3 class="title text-center">
-            Total
-        </h3>
+        <div class="container">
+            <h3 class="title text-center">
+                Total
+            </h3>
 
-        <div class="card card-presupuesto">
-            <div class="row">
-                <div class="col no-right">
-                    <div class="card card-left">
-                        <div class="card-title text-center align-middle">
+            <div class="card card-presupuesto">
+                <div class="row">
+                    <div class="col no-right">
+                        <div class="card card-left">
+                            <div class="card-title text-center align-middle">
 
-                            <h6>Sercotec</h6>
+                                <h6>Sercotec</h6>
 
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <h3 class="text_center">
+                                    <?php
+                                    echo number_format($sercotec_total, '0', ',', '.');
+                                    ?>
+                                </h3>
+                            </div>
                         </div>
-                        <hr>
-                        <div class="card-body">
-                            <h3 class="text_center">
-                                <?php
-                                echo $sercotec_total;
-                                ?>
-                            </h3>
+                    </div>
+
+                    <div class="col no-left">
+                        <div class="card card-middle">
+                            <div class="card-title text-center align-middle">
+
+                                <h6>Aporte</h6>
+
+                            </div>
+                            <hr>
+                            <div class="card-body">
+
+                                <h3 class="text-center">
+                                    <?php
+
+                                    echo number_format($aporte_total, '0', ',', '.');
+                                    ?>
+                                </h3>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-title text-center align-middle">
+
+                                <h6 class="align-middle">Total</h6>
+
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <h3 class="text-center">
+                                    <?php
+                                    echo number_format($total_resultante, '0', ',', '.');
+
+                                    ?>
+                                </h3>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col no-both">
-                    <div class="card card-middle">
-                        <div class="card-title text-center align-middle">
-
-                            <h6>Aporte</h6>
-
-                        </div>
-                        <hr>
-                        <div class="card-body">
-
-                            <h3 class="text-center">
-                                <?php
-                                echo $aporte_total;
-                                ?>
-                            </h3>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col no-left">
-                    <div class="card card-right">
-                        <div class="card-title text-center align-middle">
-
-                            <h6>Total</h6>
-
-                        </div>
-                        <hr>
-                        <div class="card-body">
-                            <h3 class="text-center">
-                                <?php
-                                echo $total_resultante;
-                                ?>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
             </div>
-
         </div>
         <hr class="white-border">
     </div>
 
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
 
 </html>

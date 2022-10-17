@@ -179,7 +179,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                                         <div class="card-body">
                                                             <h5 class="text-center">
                                                                 <?php
-                                                                echo $montos_finales[$i];
+                                                                echo number_format($montos_finales[$i], '0', ',', '.');
                                                                 ?>
                                                             </h5>
                                                         </div>
@@ -193,7 +193,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                                         <div class="card-body">
                                                             <h5 class="text-center">
                                                                 <?php
-                                                                echo $saldos_finales[$i];
+                                                                echo number_format($saldos_finales[$i], '0', ',', '.');
                                                                 ?>
                                                             </h5>
                                                         </div>

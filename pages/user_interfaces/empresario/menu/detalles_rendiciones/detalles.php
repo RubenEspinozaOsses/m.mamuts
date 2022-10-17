@@ -125,7 +125,7 @@ foreach ($rendiciones as $rendicion) {
                 foreach ($rendiciones_especificas as $rendicion) {
 
                 ?>
-                    <div class="card w-75 main-card">
+                    <div class="card w-80 main-card">
 
                         <div class="card-title title">
                             <h5 class="text-center align-middle">
@@ -148,15 +148,19 @@ foreach ($rendiciones as $rendicion) {
                                                 <?php
                                                 $sa = ($rendicion->obtener_aporte_empresarial()
                                                 + $rendicion->obtener_cofinanciamiento());
-                                                echo $sa;
+                                                echo number_format($sa, '0', ',', '.');
                                                 ?>
                                             </h4>
                                         </div>
                                         <p class="desglose-sa text-center" id="detsercapor">
                                             ( <?php
-                                                echo $rendicion->obtener_cofinanciamiento()
+                                                echo number_format(
+                                                    $rendicion->obtener_cofinanciamiento(), '0', ',', '.'
+                                                );
                                             ?> + <?php
-                                                echo $rendicion->obtener_aporte_empresarial()
+                                                echo number_format(
+                                                    $rendicion->obtener_aporte_empresarial(), '0', ',', '.'
+                                                );
                                             ?> )
                                         </p>
 
@@ -176,14 +180,19 @@ foreach ($rendiciones as $rendicion) {
                                         <div class="card-title">
                                             <h4 class="text-center align-middle">
                                                 <?php
-                                                echo $rendicion->obtener_aporte_extra();
+                                                echo number_format(
+                                                    $rendicion->obtener_aporte_extra(), '0', ',', '.'
+                                                );
                                                 ?>
                                             </h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="middle-cc col on-same-line">
+                            
+                        </div>
+                        <div class="row">
+                        <div class="middle-cc col on-same-line">
                                 <div class="card rect-border card-right zero-margin smaller-card">
                                     <div class="card-title">
                                         <h6 class="text-center">
@@ -195,7 +204,12 @@ foreach ($rendiciones as $rendicion) {
 
                                         <div class="card-title text-center">
                                             <h4>
-                                                <?php echo $rendicion->obtener_total_con_iva() ?>
+                                                <?php
+                                                    echo number_format(
+                                                        $rendicion->obtener_total_con_iva(), '0', ',', '.'
+                                                    );
+                                                ?>
+                                                
                                             </h4>
                                         </div>
                                     </div>

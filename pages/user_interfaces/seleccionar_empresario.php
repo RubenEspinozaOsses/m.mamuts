@@ -23,10 +23,7 @@ if ($_SESSION['acceso_usuario_m'] == 1) {
     conexion::obtener_conexion()
   );
 
-  $empresarios = class_operar_empresarios::listar_empresarios_asesor(
-    $rut_asesor,
-    conexion::obtener_conexion()
-  );
+  $empresarios = class_operar_empresarios::listar_empresarios_codigo_bp_activo(conexion::obtener_conexion());
   $mostrar = true;
 } elseif ($_SESSION['acceso_usuario_m'] == 2) {
   $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
@@ -77,7 +74,7 @@ if ($mostrar) {
         aria-controls="search">
           <img src="../../img/buscar.png" alt="" width="30" height="30">
         </a>
-        
+
         <div class="d-flex-3 me-3" style="color: white;">
           <span><?php echo $_SESSION['nombre_usuario_m']
                   . " " . $_SESSION['apellido_paterno_usuario_m']

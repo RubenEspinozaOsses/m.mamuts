@@ -49,6 +49,7 @@ hr {
 
     border-top-right-radius: 0rem;
     border-bottom-right-radius: 0rem;
+    padding-right: 0%;
 }
 
 .card-right {
@@ -60,6 +61,7 @@ hr {
 .card-middle {
 
     border-radius: 0rem;
+    padding-left: 0%;
 }
 
 .menu-button {
