@@ -79,11 +79,3 @@ nav {
     background-color: var(--main-color);
 }
 
-img {
-    width: 65%;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    align-content: center;
-    border-color: var(--main-color);
-}

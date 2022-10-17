@@ -65,6 +65,28 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                 <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
+            <?php session_start() ?>
+            <div class="d-flex-3 me-3" style="color: white;">
+                <span><?php echo $_SESSION['nombre_usuario_m']
+                            . " " . $_SESSION['apellido_paterno_usuario_m']
+                            . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+                <span>
+                    <button class="btn"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#opciones_usuario"
+                    aria-expanded="false" aria-controls="opciones_usuario">
+                        <img src="../../../../img/user.png" alt="User" width="30px" height="30px">
+                    </button>
+
+                </span>
+                <div class="collapse" id="opciones_usuario">
+                    <span>
+                        <a href="../../../../middlewares/logout.php" style="color: white;">
+                            Cerrar Sesion
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </nav>
 

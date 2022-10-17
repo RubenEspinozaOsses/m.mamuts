@@ -15,11 +15,13 @@ $password = $_POST['password'];
 $login_valido = false;
 $error = '';
 
-if (preg_match("/[0-9]{7,8}[-]{0,1}[0-9Kk]{1}/", $rut)
-|| preg_match("/[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}/", $rut)) {
+if (
+    preg_match("/[0-9]{7,8}[-]{0,1}[0-9Kk]{1}/", $rut)
+    || preg_match("/[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}/", $rut)
+) {
     $validador = new login_val($rut, $password);
     $login_valido = $validador->login_valido();
-}else {
+} else {
     $error = 'Rut invalido';
 }
 
@@ -29,24 +31,32 @@ if (!$login_valido) {
     echo "<center><span>$error, intente nuevamente</span></center>";
 } else {
     $password = '';
-    
+
     $rut = str_replace(".", "", $rut);
+    $rut = str_replace("-", "", $rut);
+    $largo_rut = strlen($rut);
+    $rut = substr_replace($rut, "-", $largo_rut - 1, 0);
     $usuario = class_operar_usuarios::buscar_usuarios_rut($rut, conexion::obtener_conexion());
-    $user_id = $usuario->obtener_id();
+    if (!is_null($usuario)) {
+        $user_id = $usuario->obtener_id();
 
-    control_sesion::iniciar_sesion(
-        $usuario->obtener_id(),
-        $usuario->obtener_nombre(),
-        $usuario->obtener_apellido_paterno(),
-        $usuario->obtener_apellido_materno(),
-        $usuario->obtener_rut(),
-        $usuario->obtener_acceso(),
-        tiempo_sesion
-    );
+        control_sesion::iniciar_sesion(
+            $usuario->obtener_id(),
+            $usuario->obtener_nombre(),
+            $usuario->obtener_apellido_paterno(),
+            $usuario->obtener_apellido_materno(),
+            $usuario->obtener_rut(),
+            $usuario->obtener_acceso(),
+            tiempo_sesion
+        );
 
 
 
-    header('Refresh:2;url=../pages/user_interfaces/seleccionar_empresario.php');
+        header('Refresh:2;url=../pages/user_interfaces/seleccionar_empresario.php');
+    } else {
+        header("refresh:1;url=../pages/login.php");
+        echo "<center><span>Usuario no encontrado, compruebe los datos</span></center>";
+    }
 }
 
 conexion::cerrar_conexion();
