@@ -8,7 +8,12 @@ include '../../../sys/db_config.php';
 
 conexion::abrir_conexion();
 
-$empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_GET['rut_empresario']), conexion::obtener_conexion());
+$empresario = class_operar_empresarios::buscar_empresarios_rut(
+  base64_decode(
+    $_GET['rut_empresario']
+  ),
+  conexion::obtener_conexion()
+);
 
 
 ?>
@@ -32,11 +37,30 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
   <nav class="navbar">
     <div class="container-fluid">
-      
+
       <a href="../seleccionar_empresario.php" class="card navbar-left">
-        <img src="../../../img/back.png" alt="" width="30" height="30" background-color="black" >
+        <img src="../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
       </a>
+      <?php session_start() ?>
+      <div class="d-flex-3 me-3" style="color: white;">
+        <span><?php echo $_SESSION['nombre_usuario_m']
+                . " " . $_SESSION['apellido_paterno_usuario_m']
+                . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+        <span>
+          <button class="btn" data-bs-toggle="collapse" data-bs-target="#opciones_usuario" aria-expanded="false" aria-controls="opciones_usuario">
+            <img src="../../../img/user.png" alt="User" width="30px" height="30px">
+          </button>
+
+        </span>
+        <div class="collapse" id="opciones_usuario">
+          <span>
+            <a href="../../../middlewares/logout.php" style="color: white;">
+              Cerrar Sesion
+            </a>
+          </span>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -146,20 +170,33 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut(base64_decode($_G
 
 
                       $estado = $proyecto->obtener_estado();
-                      $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+                      $formalizacion = class_operar_formalizacion::listar_formalizacion_codigo_empresario(
+                        $empresario->obtener_codigo_empresario(),
+                        conexion::obtener_conexion()
+                      );
+
                       $fecha_hoy = date('Y-m-d');
 
-                      $fecha_termino = $formalizacion[0]->obtener_fecha_termino();
+                      if (!empty($formalizacion)) {
+                        $fecha_termino = $formalizacion[0]->obtener_fecha_termino();
 
-                      $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario($empresario->obtener_codigo_empresario(), conexion::obtener_conexion());
+                        $dias_extra = class_operar_dias_extras_empresario::buscar_dias_extras_codigo_empresario(
+                          $empresario->obtener_codigo_empresario(),
+                          conexion::obtener_conexion()
+                        );
 
-                      $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
+                        $dias_restantes = ((strtotime($fecha_termino) - strtotime($fecha_hoy)) / 86400) + $dias_extra;
 
-                      $msg_dias_extra = $dias_extra > 0 ? "($dias_extra dias extra)" : "";
+                        $msg_dias_extra = $dias_extra > 0 ? "($dias_extra dias extra)" : "";
 
-                      $msg_dias_restantess = $dias_restantes <= 0 ? "No quedan dias restantes" : "$estado, quedan $dias_restantes dias";
+                        $msg_dias_restantess = $dias_restantes <= 0 ?
+                          "No quedan dias restantes" :
+                          "$estado, quedan $dias_restantes dias";
 
-                      echo $estado == "Activo" ? $msg_dias_restantess . $msg_dias_extra : "$estado";
+                        echo $estado == "Activo" ? $msg_dias_restantess . $msg_dias_extra : "$estado";
+                      } else {
+                        echo "<center><span>No hay formalizacion para este empresario</span></center>";
+                      }
 
                       ?>
                     </div>

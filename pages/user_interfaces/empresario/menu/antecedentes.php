@@ -65,6 +65,28 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                 <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
+            <?php session_start() ?>
+            <div class="d-flex-3 me-3" style="color: white;">
+                <span><?php echo $_SESSION['nombre_usuario_m']
+                            . " " . $_SESSION['apellido_paterno_usuario_m']
+                            . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+                <span>
+                    <button class="btn"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#opciones_usuario"
+                    aria-expanded="false" aria-controls="opciones_usuario">
+                        <img src="../../../../img/user.png" alt="User" width="30px" height="30px">
+                    </button>
+
+                </span>
+                <div class="collapse" id="opciones_usuario">
+                    <span>
+                        <a href="../../../../middlewares/logout.php" style="color: white;">
+                            Cerrar Sesion
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -256,7 +278,14 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                         <div class="col">
                             <h6>Sercotec</h6>
                             <p>
-                                <?php echo $empresario->obtener_cofinanciamiento(); ?>
+                                <?php
+                                echo number_format(
+                                $empresario->obtener_cofinanciamiento(),
+                                    '0',
+                                    ',',
+                                    '.'
+                                )
+                                ?>
                             </p>
                         </div>
                     </div>
@@ -277,7 +306,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                         <div class="col">
                             <h6>Aporte Empresarial</h6>
                             <p>
-                                <?php echo $empresario->obtener_aporte_empresarial(); ?>
+                                <?php echo number_format($empresario->obtener_aporte_empresarial(), '0', ',', '.'); ?>
                             </p>
                         </div>
                     </div>
@@ -295,7 +324,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                                 <?php
                                 $total = $empresario->obtener_aporte_empresarial()
                                 + $empresario->obtener_cofinanciamiento();
-                                echo $total;
+                                echo number_format($total, '0', ',', '.')
                                 ?>
                             </p>
                         </div>

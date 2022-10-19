@@ -70,6 +70,28 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                 <img src="../../../../img/back.png" alt="" width="30" height="30" background-color="black">
 
             </a>
+            <?php session_start() ?>
+            <div class="d-flex-3 me-3" style="color: white;">
+                <span><?php echo $_SESSION['nombre_usuario_m']
+                            . " " . $_SESSION['apellido_paterno_usuario_m']
+                            . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+                <span>
+                    <button class="btn"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#opciones_usuario"
+                    aria-expanded="false" aria-controls="opciones_usuario">
+                        <img src="../../../../img/user.png" alt="User" width="30px" height="30px">
+                    </button>
+
+                </span>
+                <div class="collapse" id="opciones_usuario">
+                    <span>
+                        <a href="../../../../middlewares/logout.php" style="color: white;">
+                            Cerrar Sesion
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -95,8 +117,9 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
         }
         return $recolectados;
     }
-    $ren_map = array();
-    $recolecados = subitemDiferentes($rendiciones);
+    if (count($rendiciones) > 0) {
+        $ren_map = array();
+    $recolectados = subitemDiferentes($rendiciones);
 
     ?>
 
@@ -112,7 +135,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                             $nombres_si = array();
                             $descripciones = array();
                             $i = 0;
-                            foreach ($recolecados as $cod_si) {
+                            foreach ($recolectados as $cod_si) {
                                 $monto = 0;
                                 $cofinanciamiento = 0;
                                 $aporte_empresarial = 0;
@@ -156,7 +179,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                                         <div class="card-body">
                                                             <h5 class="text-center">
                                                                 <?php
-                                                                echo $montos_finales[$i];
+                                                                echo number_format($montos_finales[$i], '0', ',', '.');
                                                                 ?>
                                                             </h5>
                                                         </div>
@@ -170,7 +193,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                                         <div class="card-body">
                                                             <h5 class="text-center">
                                                                 <?php
-                                                                echo $saldos_finales[$i];
+                                                                echo number_format($saldos_finales[$i], '0', ',', '.');
                                                                 ?>
                                                             </h5>
                                                         </div>
@@ -235,7 +258,11 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
 
         </div>
     </div>
-
+    <?php
+    } else {
+        echo "<center><span>No hay rendiciones para este empresario</span></center>";
+    }
+    ?>
     <!-- Bootstrap JavaScript Libraries -->
     <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"

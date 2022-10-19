@@ -49,6 +49,7 @@ hr {
 
     border-top-right-radius: 0rem;
     border-bottom-right-radius: 0rem;
+    padding-right: 0%;
 }
 
 .card-right {
@@ -60,6 +61,7 @@ hr {
 .card-middle {
 
     border-radius: 0rem;
+    padding-left: 0%;
 }
 
 .menu-button {
@@ -79,11 +81,3 @@ nav {
     background-color: var(--main-color);
 }
 
-img {
-    width: 65%;
-    border-radius: 50%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    align-content: center;
-    border-color: var(--main-color);
-}

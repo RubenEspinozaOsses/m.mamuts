@@ -12,39 +12,51 @@ conexion::abrir_conexion();
 $rut = $_POST['rut'];
 $password = $_POST['password'];
 
+$login_valido = false;
+$error = '';
 
-$validador = new login_val($rut, $password);
-
-$login_valido = $validador -> login_valido();
-//echo "<script type='text/javascript'>alert('$login_valido');</script>";
+if (
+    preg_match("/[0-9]{7,8}[-]{0,1}[0-9Kk]{1}/", $rut)
+    || preg_match("/[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}/", $rut)
+) {
+    $validador = new login_val($rut, $password);
+    $login_valido = $validador->login_valido();
+} else {
+    $error = 'Rut invalido';
+}
 
 
 if (!$login_valido) {
     header("refresh:1;url=../pages/login.php");
-    echo "<script type='text/javascript'>alert('Hubo un problema con su login1, intente nuevamente');</script>";
-
-    
+    echo "<center><span>$error, intente nuevamente</span></center>";
 } else {
     $password = '';
 
+    $rut = str_replace(".", "", $rut);
+    $rut = str_replace("-", "", $rut);
+    $largo_rut = strlen($rut);
+    $rut = substr_replace($rut, "-", $largo_rut - 1, 0);
     $usuario = class_operar_usuarios::buscar_usuarios_rut($rut, conexion::obtener_conexion());
-    $user_id = $usuario -> obtener_id();
+    if (!is_null($usuario)) {
+        $user_id = $usuario->obtener_id();
 
-    //echo "$user_id -> Es la id";
-    control_sesion::iniciar_sesion(
-        $usuario->obtener_id(),
-        $usuario->obtener_nombre(),
-        $usuario->obtener_apellido_paterno(),
-        $usuario->obtener_apellido_materno(),
-        $usuario->obtener_rut(),
-        $usuario->obtener_acceso(),
-        tiempo_sesion);
+        control_sesion::iniciar_sesion(
+            $usuario->obtener_id(),
+            $usuario->obtener_nombre(),
+            $usuario->obtener_apellido_paterno(),
+            $usuario->obtener_apellido_materno(),
+            $usuario->obtener_rut(),
+            $usuario->obtener_acceso(),
+            tiempo_sesion
+        );
 
-    
 
-    header('Refresh:2;url=../pages/user_interfaces/seleccionar_empresario.php');
 
-    
+        header('Refresh:2;url=../pages/user_interfaces/seleccionar_empresario.php');
+    } else {
+        header("refresh:1;url=../pages/login.php");
+        echo "<center><span>Usuario no encontrado, compruebe los datos</span></center>";
+    }
 }
 
 conexion::cerrar_conexion();

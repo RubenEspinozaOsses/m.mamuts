@@ -44,7 +44,30 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                 <img src="../../../img/back.png" alt="" class="navbar-button">
 
             </a>
+            <?php session_start() ?>
+            <div class="d-flex-3 me-3" style="color: white;">
+                <span><?php echo $_SESSION['nombre_usuario_m']
+                            . " " . $_SESSION['apellido_paterno_usuario_m']
+                            . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+                <span>
+                    <button class="btn"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#opciones_usuario"
+                    aria-expanded="false" aria-controls="opciones_usuario">
+                        <img src="../../../img/user.png" alt="User" width="30px" height="30px">
+                    </button>
+
+                </span>
+                <div class="collapse" id="opciones_usuario">
+                    <span>
+                        <a href="../../../middlewares/logout.php" style="color: white;">
+                            Cerrar Sesion
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
+
     </nav>
 
     <h1 class="text-center title">
@@ -66,7 +89,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
                         <img src="../../../img/antecedentes.png" alt="Antecedentes" class="menu-icon"><br>
                         <h6>Antecedentes</h6>
                     </a>
-                    
+
                 </div>
             </div>
             <div class="col">
@@ -113,7 +136,7 @@ $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_r
             </div>
             <div class="col">
                 <div class="transparent-element">
-                    
+
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 include '../../sys/control_sesion.php';
 include '../../sys/db_config.php';
 session_start();
-//echo $_SESSION['id_usuario_m'] . " -> es la id guardada en la sesion" . "<br>";
 if (!isset($_SESSION['id_usuario_m'])) {
 
   conexion::cerrar_conexion();
@@ -24,22 +23,7 @@ if ($_SESSION['acceso_usuario_m'] == 1) {
     conexion::obtener_conexion()
   );
 
-  $empresarios = array();
-
-  $proyectos = class_operar_proyectos::listar_proyectos_activos(conexion::obtener_conexion());
-  $i = 0;
-  foreach ($proyectos as $p) {
-    foreach ($empresarios_obtenidos as $e){
-      $codigo_bp = explode('-', $e->obtener_codigo_empresario())[0];
-      
-      if ($p -> obtener_codigo_bp() == $codigo_bp) {
-        //echo $codigo_bp . "<br>";
-        $empresarios[$i] = $e;
-        $i++;
-        break;
-      }
-    }
-  }
+  $empresarios = class_operar_empresarios::listar_empresarios_codigo_bp_activo(conexion::obtener_conexion());
   $mostrar = true;
 } elseif ($_SESSION['acceso_usuario_m'] == 2) {
   $empresarios = class_operar_empresarios::listar_empresarios_asesor_activo_observado(
@@ -73,7 +57,6 @@ if ($mostrar) {
 
 
     $cantidad_empresarios = count($empresarios);
-    //echo "<script type='text/javascript'>console.log('$rut_asesor');console.log('$cantidad_empresarios');</script>";
 
 
     conexion::cerrar_conexion();
@@ -81,10 +64,40 @@ if ($mostrar) {
 
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand ml-auto" href="#" data-bs-toggle="collapse" data-bs-target="#search" aria-expanded="false" aria-controls="search">
+        <a
+        class="navbar-brand
+        ml-3"
+        href="#"
+        data-bs-toggle="collapse"
+        data-bs-target="#search"
+        aria-expanded="false"
+        aria-controls="search">
           <img src="../../img/buscar.png" alt="" width="30" height="30">
         </a>
 
+        <div class="d-flex-3 me-3" style="color: white;">
+          <span><?php echo $_SESSION['nombre_usuario_m']
+                  . " " . $_SESSION['apellido_paterno_usuario_m']
+                  . " " . $_SESSION['apellido_materno_usuario_m'] ?></span>
+          <span>
+            <button
+            class="btn"
+            data-bs-toggle="collapse"
+            data-bs-target="#opciones_usuario"
+            aria-expanded="false"
+            aria-controls="opciones_usuario">
+              <img src="../../img/user.png" alt="User" width="30px" height="30px">
+            </button>
+
+          </span>
+          <div class="collapse" id="opciones_usuario">
+            <span>
+              <a href="../../middlewares/logout.php" style="color: white;">
+                Cerrar Sesion
+              </a>
+            </span>
+          </div>
+        </div>
 
 
       </div>
@@ -100,10 +113,14 @@ if ($mostrar) {
         </div>
 
       </div>
+
+      <div class="container-fluid">
+
+      </div>
     </nav>
 
     <h1 class="title text-center">
-      Empresarios
+      Empresarios (<?php echo $cantidad_empresarios ?>)
     </h1>
 
     <div class="page-wrap gradient-primary">
@@ -131,8 +148,8 @@ if ($mostrar) {
                     <div class="card-body">
                       <div class="col">
                         <h5 class="card-title fit-word"><?php echo $apellido_paterno . " "
-                                                      . $apellido_materno . ", "
-                                                      . $nombre ?>
+                                                          . $apellido_materno . ", "
+                                                          . $nombre ?>
                         </h5>
                       </div>
                       <div class="col-3">

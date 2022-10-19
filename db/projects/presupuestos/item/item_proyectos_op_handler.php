@@ -264,7 +264,13 @@ class class_operar_item_proyectos {
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
                         $item_proyectos[] = new class_tabla_item_proyectos(
-                                $fila['id'], $fila['codigo_bp'], $fila['codigo_item'], $fila['item'], $fila['codigo_subitem'], $fila['subitem'], $fila['tipo']
+                                $fila['id'],
+                                $fila['codigo_bp'],
+                                $fila['codigo_item'],
+                                $fila['item'],
+                                $fila['codigo_subitem'],
+                                $fila['subitem'],
+                                $fila['tipo']
                         );
                     }
                 }
