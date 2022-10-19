@@ -140,6 +140,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                 $cofinanciamiento = 0;
                                 $aporte_empresarial = 0;
                                 $saldo = 0;
+                                $pts = array();
                                 foreach ($rendiciones as $rendicion) {
                                     if ($rendicion->obtener_codigo_subitem() == $cod_si) {
                                         $nombres_si[$i] = class_operar_item_proyectos::buscar_item_proyectos_subitem(
@@ -149,9 +150,12 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                         )->obtener_subitem();
                                         $cofinanciamiento += $rendicion->obtener_cofinanciamiento();
                                         $aporte_empresarial += $rendicion->obtener_aporte_empresarial();
-                                        $descripciones[$i] = $rendicion->obtener_descripcion();
+                                        $pts[] = $rendicion->obtener_descripcion();
+                                        
                                     }
                                 }
+                                $descripciones[$i] = $pts;
+                                $pts = null;
                                 foreach ($presupuestos as $presupuesto) {
                                     if ($presupuesto->obtener_codigo_subitem() == $cod_si) {
                                         $monto += $presupuesto->obtener_total_fin();
@@ -163,7 +167,7 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                 $montos_finales[$i] = $monto;
 
                             ?>
-                                <div class="row card w-75 zero-margin card-container">
+                                <div class="row card w-100 zero-margin card-container">
                                     <div class="col">
                                         <h6 class="card-title text-center fit-word">
                                             <?php echo $nombres_si[$i]; ?>
@@ -227,7 +231,13 @@ $proyecto = class_operar_proyectos::buscar_proyectos_codigo_bp(
                                             <div class="card">
                                                 <div class="card-body override-card-body">
                                                     <div class="text-center fit-word">
-                                                        <?php echo $descripciones[$i] ?>
+                                                        <ul class="list-group">
+                                                        <?php
+                                                            foreach ($descripciones[$i] as $descripcion) {
+                                                                echo "<li class='list-group-item'>$descripcion</li>";
+                                                            }
+                                                        ?>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
