@@ -9,7 +9,15 @@ include '../../../../sys/db_config.php';
 
 conexion::abrir_conexion();
 
+session_start();
+if (!isset($_SESSION['id_usuario_m'])) {
 
+  conexion::cerrar_conexion();
+  control_sesion::cerrar_sesion();
+
+  echo "Inicie sesion nuevamente";
+  header("refresh:1;url=../../../login.php");
+}
 
 $rut_empresario = $_GET['rut_empresario'];
 

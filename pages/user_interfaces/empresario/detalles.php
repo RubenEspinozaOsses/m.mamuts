@@ -8,6 +8,16 @@ include '../../../sys/db_config.php';
 
 conexion::abrir_conexion();
 
+session_start();
+if (!isset($_SESSION['id_usuario_m'])) {
+
+  conexion::cerrar_conexion();
+  control_sesion::cerrar_sesion();
+
+  echo "Inicie sesion nuevamente";
+  header("refresh:1;url=../../login.php");
+}
+
 $empresario = class_operar_empresarios::buscar_empresarios_rut(
   base64_decode(
     $_GET['rut_empresario']

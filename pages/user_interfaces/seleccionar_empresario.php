@@ -8,7 +8,7 @@ if (!isset($_SESSION['id_usuario_m'])) {
   control_sesion::cerrar_sesion();
 
   echo "Inicie sesion nuevamente";
-  header("refresh:4;url=../login.php");
+  header("refresh:1;url=../login.php");
 }
 include '../../db/entrepeneur/entrepeneur_handler.php';
 
