@@ -83,6 +83,7 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
 
                 <h5 class="title text-center">
                     <?php
+                    //el index de los subitems no corresponde a lo que deberia mostrar
                     echo $subitems_e[$i]->obtener_subitem();
 
                     ?>
@@ -98,12 +99,12 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                                 </div>
                                 <hr class="mc-divider">
                                 <div class="card-body">
-                                    <h3 class="text-center align-middle">
+                                    <h6 class="text-center align-middle">
                                         <?php
                                         $sercotec_total += $presupuesto->obtener_cofinanciamiento_fin();
                                         echo $presupuesto->obtener_cofinanciamiento_fin();
                                         ?>
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -117,12 +118,12 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                                 </div>
                                 <hr class="mc-divider">
                                 <div class="card-body">
-                                    <h3 class="text-center">
+                                    <h6 class="text-center">
                                         <?php
                                         $aporte_total += $presupuesto->obtener_aporte_empresarial_fin();
                                         echo $presupuesto->obtener_aporte_empresarial_fin();
                                         ?>
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -136,12 +137,12 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                                 </div>
                                 <hr class="mc-divider">
                                 <div class="card-body">
-                                    <h3 class="text-center align-middle">
+                                    <h6 class="text-center align-middle">
                                         <?php
                                         $total_resultante += $presupuesto->obtener_total_fin();
                                         echo $presupuesto->obtener_total_fin();
                                         ?>
-                                    </h3>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -175,11 +176,11 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                         </div>
                         <hr>
                         <div class="card-body">
-                            <h3 class="text_center">
+                            <h6 class="text_center">
                                 <?php
                                 echo $sercotec_total;
                                 ?>
-                            </h3>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -194,11 +195,11 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                         <hr>
                         <div class="card-body">
 
-                            <h3 class="text-center">
+                            <h6 class="text-center">
                                 <?php
                                 echo $aporte_total;
                                 ?>
-                            </h3>
+                            </h6>
 
                         </div>
                     </div>
@@ -213,11 +214,11 @@ $subitems_e = class_operar_item_proyectos::listar_item_proyectos_codigo_bp($codi
                         </div>
                         <hr>
                         <div class="card-body">
-                            <h3 class="text-center">
+                            <h6 class="text-center">
                                 <?php
                                 echo $total_resultante;
                                 ?>
-                            </h3>
+                            </h6>
                         </div>
                     </div>
                 </div>
