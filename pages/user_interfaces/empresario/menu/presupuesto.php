@@ -6,6 +6,7 @@ include '../../../../db/formalization/formalization_handler.php';
 include '../../../../db/entrepeneur/entrepeneur_extrad_handler.php';
 include '../../../../db/projects/presupuestos/presupuesto_op_handler.php';
 include '../../../../db/projects/presupuestos/item/item_proyectos_op_handler.php';
+include '../../../../db/projects/rendiciones/rendiciones_op_handler.php';
 include '../../../../sys/db_config.php';
 
 conexion::abrir_conexion();
@@ -18,6 +19,11 @@ $rut_empresario_real = base64_decode($rut_empresario);
 
 $empresario = class_operar_empresarios::buscar_empresarios_rut($rut_empresario_real, conexion::obtener_conexion());
 $pre_empresarios = class_operar_presupuestos::listar_presupuestos_empresario(
+    $empresario->obtener_codigo_empresario(),
+    conexion::obtener_conexion()
+);
+
+$rendiciones = class_operar_rendiciones::listar_rendiciones_empresario(
     $empresario->obtener_codigo_empresario(),
     conexion::obtener_conexion()
 );
@@ -39,9 +45,11 @@ foreach ($pre_empresarios as $p) {
             && $tiene_valor
         ) {
             $nombres_si[$index_nombre] = $si->obtener_subitem();
+
             $index_nombre++;
         }
     }
+    
 }
 
 ?>
@@ -112,7 +120,6 @@ foreach ($pre_empresarios as $p) {
                 || $presupuesto->obtener_total_fin() > 0
             ) {
 
-
         ?>
 
                 <h5 class="title text-center">
@@ -142,7 +149,7 @@ foreach ($pre_empresarios as $p) {
                                                 ',',
                                                 '.'
                                             );
-                                            
+
                                             ?>
                                         </h3>
                                     </div>
@@ -197,7 +204,45 @@ foreach ($pre_empresarios as $p) {
                             </div>
                         </div>
 
+                        <div class="card-footer text-center">
+                        <a
+                        class="btn"
+                        data-bs-toggle="collapse"
+                        href="#plan-inversion-<?php
+                        echo $i
+                        ?>"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="plan-inversion-<?php
+                        echo $i
+                        ?>">
+                            Plan de Inversión
+                        </a>
+                        <div class="collapse" id="plan-inversion-<?php echo $i ?>">
+                            <div class="card card-body">
+                                <p>
+                                    <?php
+
+                                        if ($presupuesto -> obtener_detalle() == ''
+                                        || $presupuesto -> obtener_detalle() == 'Sin información') {
+                                            echo "Sin información";
+                                        } else {
+                                            echo $presupuesto -> obtener_detalle();
+                                        }
+                                    
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
+
+                    </div>
+                    
+
+
+
+
+
                 </div>
 
                 <hr class="border-white">
@@ -279,6 +324,7 @@ foreach ($pre_empresarios as $p) {
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>

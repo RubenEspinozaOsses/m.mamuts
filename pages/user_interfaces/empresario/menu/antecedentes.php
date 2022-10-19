@@ -278,7 +278,14 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                         <div class="col">
                             <h6>Sercotec</h6>
                             <p>
-                                <?php echo $empresario->obtener_cofinanciamiento(); ?>
+                                <?php
+                                echo number_format(
+                                $empresario->obtener_cofinanciamiento(),
+                                    '0',
+                                    ',',
+                                    '.'
+                                )
+                                ?>
                             </p>
                         </div>
                     </div>
@@ -299,7 +306,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                         <div class="col">
                             <h6>Aporte Empresarial</h6>
                             <p>
-                                <?php echo $empresario->obtener_aporte_empresarial(); ?>
+                                <?php echo number_format($empresario->obtener_aporte_empresarial(), '0', ',', '.'); ?>
                             </p>
                         </div>
                     </div>
@@ -317,7 +324,7 @@ $tipos_formalizacion = class_operar_tipo_formalizacion::listar_tipo_formalizacio
                                 <?php
                                 $total = $empresario->obtener_aporte_empresarial()
                                 + $empresario->obtener_cofinanciamiento();
-                                echo $total;
+                                echo number_format($total, '0', ',', '.')
                                 ?>
                             </p>
                         </div>

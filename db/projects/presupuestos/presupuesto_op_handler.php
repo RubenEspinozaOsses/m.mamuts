@@ -23,7 +23,6 @@ class class_operar_presupuestos {
 
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
-                        $fila['detalle'] = '';
                         $presupuestos[] = new class_tabla_presupuestos(
                                 $fila['id'], $fila['codigo_empresario'], $fila['codigo_item'], $fila['codigo_subitem'], $fila['cofinanciamiento_pt'], $fila['aporte_empresarial_pt'], $fila['total_pt'], $fila['cofinanciamiento_cer'], $fila['aporte_empresarial_cer'], $fila['total_cer'], $fila['cofinanciamiento_25p'], $fila['aporte_empresarial_25p'], $fila['total_25p'], $fila['cofinanciamiento_fin'], $fila['aporte_empresarial_fin'], $fila['total_fin'], $fila['detalle']
                         );
